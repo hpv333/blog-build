@@ -1,13 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import Resume from './Resume';
-
+import Resume from './components/Resume';
+import Navbar from './components/Navbar';
 function App() {
   return (
     <div className="App">
       <header className="App-header">
        
-        <Resume />
+     <Resume /> 
+       
         {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

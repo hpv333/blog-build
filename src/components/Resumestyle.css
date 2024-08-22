@@ -1,0 +1,61 @@
+.resume {
+  font-family: Arial, sans-serif;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #e08989;
+  border-radius: 5px;
+}
+
+.box {
+  background-color: #25283b;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+  font-family: 'Times New Roman', Times, serif;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.box.flip {
+  transform: rotateX(180deg);
+}
+
+.sub_box, .sub_box2 {
+  backface-visibility: hidden;
+  width: 100%;
+}
+
+.sub_box2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: rotateX(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile_box {
+  display: flex;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+}
+
+.profile_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5%;
+}
+
+/* Rest of your CSS remains the same */
