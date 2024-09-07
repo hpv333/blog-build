@@ -8,7 +8,7 @@
 }
 
 .box {
-  background-color: #25283b;
+  background-color: #767eaf;
   padding: 20px;
   border-radius: 5px;
   display: flex;
@@ -57,5 +57,7 @@
   object-fit: cover;
   border-radius: 5%;
 }
+
+
 
 /* Rest of your CSS remains the same */
