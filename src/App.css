@@ -37,3 +37,6 @@
   }
 }
 
+.image-list-item-bar-title {
+  white-space: pre-line; /* This will render the newline character */
+}

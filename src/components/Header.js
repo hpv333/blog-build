@@ -36,9 +36,9 @@ function Header() {
   };
 
   return (
-    <AppBar position="fixed" sx={{backgroundColor: "red", marginTop:"0rem", top:"0rem"
+    <AppBar position="fixed" sx={{backgroundColor: "pink", marginTop:"0rem", top:"0rem", marginLeft:"5rem"
     }}>
-      <Container maxWidth="xl" sx={{backgroundColor:  "rgb(121, 68, 201)", marginTop:"0rem"
+      <Container maxWidth="" sx={{backgroundColor:  "rgb(121, 68, 201)", marginTop:"0rem"
       }}>
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -57,7 +57,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Hari Priya Vedala
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
