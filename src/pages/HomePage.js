@@ -4,22 +4,13 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import abc from "../images/abc.png"; 
+import Donna_3 from "../images/Donna_3.jpeg";
 import Dialog_Alert from '../components/Dialog_Alert';
 
 // import { makeStyles } from '@mui/styles';
 // import {hp_img}  from "../images/hp_img.png";
 const hpImg = require('../images/hp_img.png');
 
-
-// const useStyles = makeStyles({
-//   title: {
-//     fontSize: '1rem', // Adjust the font size as needed
-//   },
-//   subtitle: {
-//     fontSize: '1rem', // Adjust the font size as needed
-//     fontWeight: 'bold', // Make the subtitle bold
-//   },
-// });
 const HomePage = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   useEffect(()=>
@@ -65,11 +56,12 @@ const itemData = [
     author: `Rexon Wong's`,
     link: 'https://textbehindimage.rexanwong.xyz/',
   },
-  // {
-  //   img: 'https://images.unsplash.com/photo-1525097487452-6278ff080c31',
-  //   title: 'Books',
-  //   author: 'Pavel Nekoranec',
-  // },
+  {
+    img: Donna_3,
+    title: 'Donna AI',
+    author: 'Mobiversite',
+    link:'https://www.musicdonna.com/'
+  },
   // {
   //   img: 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6',
   //   title: 'Sink',

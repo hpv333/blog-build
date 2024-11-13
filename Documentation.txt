@@ -4,17 +4,5 @@ npx serve -s build  - replicaes how build would look , locally
 npm run deploy  - after checking if output is righ t, use this to deploy 
 
 
-//chad
-npm install gh-pages --save-dev - Install gh-pages as a dev dependency
-Edit package.json - Add homepage and deploy scripts(    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",)
-(Don't remove name, it's required)
-git init - If not already a Git repository
-git remote add origin https://github.com/yourusername/your-repo-name.git
-npm run build - Create build files
-npx serve -s build - Test build locally
-git add .
-git commit -m "Prepare for deployment"
-git push -u origin main - Push changes to GitHub
-npm run deploy - Deploy to GitHub Pages
-Check GitHub repository settings - Set source to gh-pages branch in Pages section
+https://github.com/hpv333/blog-build/settings/pages 
+FOLLOW THIS SITE TO DEPLOY 

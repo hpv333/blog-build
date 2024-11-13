@@ -155,7 +155,11 @@ function Header() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+                  <Typography sx={{ textAlign: 'center' }}>
+                    <a href= "https://flowcv.com/resume/lqghji3921">
+                    {setting}
+                    </a>
+                    </Typography>
                 </MenuItem>
               ))}
             </Menu>
