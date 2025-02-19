@@ -16,8 +16,13 @@ import AdbIcon from '@mui/icons-material/Adb';
 const pages = [
   // 'Products', 
   // 'Pricing', 
-  'Blog'];
-const settings = ['Profile', 
+  'Blog', 
+'Projects', 
+'Work Experience', 
+'Skills', 
+'Education',];
+const settings = [
+  'Profile', 
   // 'Account', 
   // 'Dashboard', 
   // 'Logout'
@@ -34,8 +39,22 @@ function Header() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+
+  const handleCloseNavMenu = (section) => {
     setAnchorElNav(null);
+    if (typeof section === 'string') {
+      const element = document.getElementById(section.toLowerCase().replace(' ', '-'));
+      if (element) {
+        const headerOffset = 80; // Adjust this value based on your header height
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
   };
 
   const handleCloseUserMenu = () => {
@@ -120,17 +139,17 @@ function Header() {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'space-around' }, marginX:'10rem' }}>
+        {pages.map((page) => (
+          <Button
+            key={page}
+            onClick={() => handleCloseNavMenu(page)}
+            sx={{ my: 2, color: 'white', display: 'block' }}
+          >
+            {page}
+          </Button>
+        ))}
+      </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
