@@ -259,7 +259,7 @@ const HomePage = () => {
 
   <Grid2 container spacing={4}>
     {/* Unified Scheduler System */}
-    <Grid2 item xs={12} md={6}>
+    <Grid2 item xs={12} md={6} >
       <Card
         elevation={3}
         sx={{
@@ -320,7 +320,7 @@ const HomePage = () => {
                 </ListItemIcon>
                 <ListItemText 
                   primary="Centralized Platform Development"
-                  secondary="Designed and developed a MERN stack platform for equipment reservations and device checkouts, achieving 60% reduction in usage time"
+                  secondary="Designing and developing a MERN stack platform for equipment reservations and device checkouts, hoping to achieve 40% reduction in usage time"
                 />
               </ListItem>
               <ListItem>
@@ -329,7 +329,7 @@ const HomePage = () => {
                 </ListItemIcon>
                 <ListItemText 
                   primary="Advanced Access Control"
-                  secondary="Implemented multi-level administrative hierarchy with role-based access control (RBAC) using MongoDB Atlas"
+                  secondary="Implementing multi-level administrative hierarchy with role-based access control (RBAC) using MongoDB Atlas, with the roles being staff, manager, and various admins: Unit Admin, Aread Admin and Site Admin. "
                 />
               </ListItem>
               <ListItem>
@@ -409,7 +409,7 @@ const HomePage = () => {
                 </ListItemIcon>
                 <ListItemText 
                   primary="Frontend Optimization"
-                  secondary="Reduced manual playlist management time by 70% through an efficient React-based frontend application"
+                  secondary="Reduced manual playlist management time by 70% through an efficient MERN(MongoDB, Express, React, Node) stack web application dashboard implemented in the University Of North Texas, Art Building, Denton."
                 />
               </ListItem>
               <ListItem>
@@ -427,7 +427,7 @@ const HomePage = () => {
                 </ListItemIcon>
                 <ListItemText 
                   primary="Hardware Integration"
-                  secondary="Successfully deployed across UNT Art Building using Raspberry Pi hardware for screen identification and management"
+                  secondary="Successfully deployed across UNT Art Building using Raspberry Pi hardware for screen identification and management making it a cost effective and efficient solution that is scalable. "
                 />
               </ListItem>
             </List>
@@ -443,215 +443,95 @@ const HomePage = () => {
    
        
 
-        {/* Skills Section */}
         <section id="skills" className="min-h-screen py-16">
-          <Container maxWidth="lg">
-            <Typography
-              variant="h3"
-              component="h2"
-              sx={{
-                color: 'primary.main',
-                fontWeight: 600,
-                mb: 6,
-                textAlign: 'center',
-                position: 'relative',
-                '&:after': {
-                  content: '""',
-                  position: 'absolute',
-                  bottom: -16,
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: 100,
-                  height: 4,
-                  bgcolor: 'primary.main',
-                  borderRadius: 2
-                }
-              }}
-            >
-              Technical Skills
-            </Typography>
+      <Container maxWidth="lg">
+        <Typography
+          variant="h3"
+          component="h2"
+          sx={{
+            color: 'primary.main',
+            fontWeight: 600,
+            mb: 6,
+            textAlign: 'center',
+            position: 'relative',
+            '&:after': {
+              content: '""',
+              position: 'absolute',
+              bottom: -16,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: 100,
+              height: 4,
+              bgcolor: 'primary.main',
+              borderRadius: 2
+            }
+          }}
+        >
+          Technical Skills
+        </Typography>
 
-            <Grid2 container spacing={4}>
-              {/* Languages */}
-              <Grid2 item xs={12} md={4}>
-                <Card
-                  elevation={3}
-                  sx={{
-                    height: '100%',
-                    transition: 'transform 0.3s, box-shadow 0.3s',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: 8
-                    }
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      mb: 3,
-                      pb: 2,
-                      borderBottom: '2px solid',
-                      borderColor: 'primary.light'
-                    }}>
-                      <Avatar sx={{ bgcolor: 'primary.main', mr: 2 }}>
-                        <CodeIcon />
-                      </Avatar>
-                      <Typography variant="h5" color="primary.main">
-                        Languages
-                      </Typography>
-                    </Box>
-                    <Stack spacing={1.5}>
-                      {['JavaScript', 'SQL', 'NoSQL', 'Python', 'Java'].map((skill) => (
-                        <Chip
-                          key={skill}
-                          icon={<CheckCircleOutlineIcon />}
-                          label={skill}
-                          color="primary"
-                          variant="outlined"
-                          sx={{
-                            p: 2,
-                            '& .MuiChip-label': { fontSize: '1rem' },
-                            transition: 'all 0.2s',
-                            '&:hover': {
-                              bgcolor: 'primary.main',
-                              color: 'white',
-                              '& .MuiSvgIcon-root': { color: 'white' }
-                            }
-                          }}
-                        />
-                      ))}
-                    </Stack>
-                  </CardContent>
-                </Card>
-              </Grid2>
-
-              {/* Technologies */}
-              <Grid2 item xs={12} md={4}>
-                <Card
-                  elevation={3}
-                  sx={{
-                    height: '100%',
-                    transition: 'transform 0.3s, box-shadow 0.3s',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: 8
-                    }
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      mb: 3,
-                      pb: 2,
-                      borderBottom: '2px solid',
-                      borderColor: 'primary.light'
-                    }}>
-                      <Avatar sx={{ bgcolor: 'primary.main', mr: 2 }}>
-                        <StorageIcon />
-                      </Avatar>
-                      <Typography variant="h5" color="primary.main">
-                        Technologies
-                      </Typography>
-                    </Box>
-                    <Stack spacing={1.5}>
-                      {[
-                        'React.js',
-                        'Django',
-                        'Node.js',
-                        'MongoDB',
-                        'REST APIs',
-                        'Bootstrap',
-                        'Azure'
-                      ].map((tech) => (
-                        <Chip
-                          key={tech}
-                          icon={<CheckCircleOutlineIcon />}
-                          label={tech}
-                          color="primary"
-                          variant="outlined"
-                          sx={{
-                            p: 2,
-                            '& .MuiChip-label': { fontSize: '1rem' },
-                            transition: 'all 0.2s',
-                            '&:hover': {
-                              bgcolor: 'primary.main',
-                              color: 'white',
-                              '& .MuiSvgIcon-root': { color: 'white' }
-                            }
-                          }}
-                        />
-                      ))}
-                    </Stack>
-                  </CardContent>
-                </Card>
-              </Grid2>
-
-              {/* Tools & Strengths */}
-              <Grid2 item xs={12} md={4}>
-                <Card
-                  elevation={3}
-                  sx={{
-                    height: '100%',
-                    transition: 'transform 0.3s, box-shadow 0.3s',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: 8
-                    }
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      mb: 3,
-                      pb: 2,
-                      borderBottom: '2px solid',
-                      borderColor: 'primary.light'
-                    }}>
-                      <Avatar sx={{ bgcolor: 'primary.main', mr: 2 }}>
-                        <BuildIcon />
-                      </Avatar>
-                      <Typography variant="h5" color="primary.main">
-                        Tools & Strengths
-                      </Typography>
-                    </Box>
-                    <Stack spacing={1.5}>
-                      {[
-                        'Git',
-                        'VS Code',
-                        'Docker',
-                        'Kafka',
-                        'OOP',
-                        'Agile',
-                        'Documentation'
-                      ].map((tool) => (
-                        <Chip
-                          key={tool}
-                          icon={<CheckCircleOutlineIcon />}
-                          label={tool}
-                          color="primary"
-                          variant="outlined"
-                          sx={{
-                            p: 2,
-                            '& .MuiChip-label': { fontSize: '1rem' },
-                            transition: 'all 0.2s',
-                            '&:hover': {
-                              bgcolor: 'primary.main',
-                              color: 'white',
-                              '& .MuiSvgIcon-root': { color: 'white' }
-                            }
-                          }}
-                        />
-                      ))}
-                    </Stack>
-                  </CardContent>
-                </Card>
-              </Grid2>
+        <Grid2 container spacing={20}>
+          {skillsData.map((category, index) => (
+            <Grid2 item xs={12} md={4} key={index} sx={{ display: 'flex' }}>
+              <Card
+                elevation={3}
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  width: '100%',
+                  height: '100%',
+                  transition: 'transform 0.3s, box-shadow 0.3s',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: 8
+                  }
+                }}
+              >
+                <CardContent sx={{ p: 4, flexGrow: 1 }}>
+                  <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    mb: 3,
+                    pb: 2,
+                    borderBottom: '2px solid',
+                    borderColor: 'primary.light'
+                  }}>
+                    <Avatar sx={{ bgcolor: 'primary.main', mr: 2 }}>
+                      {category.icon}
+                    </Avatar>
+                    <Typography variant="h5" color="primary.main">
+                      {category.title}
+                    </Typography>
+                  </Box>
+                  <Stack spacing={1.5}>
+                    {category.skills.map((skill) => (
+                      <Chip
+                        key={skill}
+                        icon={<CheckCircleOutlineIcon />}
+                        label={skill}
+                        color="primary"
+                        variant="outlined"
+                        sx={{
+                          p: 2,
+                          '& .MuiChip-label': { fontSize: '1rem' },
+                          transition: 'all 0.2s',
+                          '&:hover': {
+                            bgcolor: 'primary.main',
+                            color: 'white',
+                            '& .MuiSvgIcon-root': { color: 'white' }
+                          }
+                        }}
+                      />
+                    ))}
+                  </Stack>
+                </CardContent>
+              </Card>
             </Grid2>
-          </Container>
-        </section>
+          ))}
+        </Grid2>
+      </Container>
+    </section>
 <br />
         {/* Education Section */}
         <section id="education" className="min-h-screen py-16 bg-gradient-to-b from-gray-50 to-white">
@@ -801,7 +681,23 @@ const HomePage = () => {
   </div>
   )
 }
-
+const skillsData = [
+  {
+    title: 'Languages',
+    icon: <CodeIcon />,
+    skills: ['JavaScript', 'SQL', 'NoSQL', 'Python', 'Java'],
+  },
+  {
+    title: 'Technologies',
+    icon: <StorageIcon />,
+    skills: ['React.js', 'Django', 'Node.js', 'MongoDB', 'REST APIs', 'Bootstrap', 'Azure'],
+  },
+  {
+    title: 'Tools & Strengths',
+    icon: <BuildIcon />,
+    skills: ['Git', 'VS Code', 'Docker', 'Kafka', 'OOP', 'Agile', 'Documentation'],
+  }
+];
 const itemData = [
   {
     img: abc,

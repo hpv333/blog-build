@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import Resume from './components/Resume';
 import Header from './components/Header';
 import Footer from './components/Footer';

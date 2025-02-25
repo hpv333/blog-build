@@ -1,4 +1,6 @@
-.App {
+$base-theme: #3279d2
+
+;.App {
   text-align: center;
 }
 
@@ -14,7 +16,7 @@
 }
 
 .App-header {
-  background-color: #ffffff;
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -39,4 +41,29 @@
 
 .image-list-item-bar-title {
   white-space: pre-line; /* This will render the newline character */
+}
+
+
+.footer {
+  display: flex;
+  position: sticky;
+  bottom: 0;
+  padding: 0.6rem;
+  width: 100%;
+  opacity: 1;
+  background-color:$base-theme; //Use variable properly
+  color:white;
+  justify-content: space-around;
+  font-size: 30;}
+
+.footer-items{
+  display: flex;
+  position:relative;
+  
+}
+
+.footer_social{
+  display: flex;
+  justify-content: space-between;
+  width:50%;
 }

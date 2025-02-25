@@ -1,17 +1,38 @@
 import React from 'react'
-
+import '../App.scss';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import CodeIcon from '@mui/icons-material/Code';
 const Footer = () => {
   return (
-    <div style=
-    {{bottom:0, 
-    padding:"0.6rem", 
-    position:"fixed", 
-    color:"white",  
-    backgroundColor: "rgb(157, 133, 194)", 
-    width :"100%"}}>
-      <a href= "https://github.com/hpv333">
-        Github: hpv333
+    <div className="footer">
+      <div className="footer_social">
+
+    
+       <div className='footer-items' style={{paddingBottom:"0.3rem"}}> 
+        Social Media Links
+
+       </div>
+      <div className='footer-items'>
+      <a href= "https://www.linkedin.com/in/haripriyav3/">
+        <LinkedInIcon sx={{color:"white",  fontSize: 40}}/>
+
       </a>
+      </div>
+      <div className='footer-items'>
+
+      <a href= "https://github.com/hpv333">
+        <CodeIcon sx={{color:"white",  fontSize: 40}}/>
+      </a>
+      </div>
+
+      <div className='footer-items'>
+
+      <a href= "https://github.com/hpv333">
+        <GitHubIcon sx={{color:"white",  fontSize: 40}}/>
+      </a>
+      </div>
+      </div>
     </div>
   )
 }
