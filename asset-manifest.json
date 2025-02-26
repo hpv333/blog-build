@@ -1,21 +1,20 @@
 {
   "files": {
-    "main.css": "/blog-build/static/css/main.815d1243.css",
-    "main.js": "/blog-build/static/js/main.b83b7385.js",
+    "main.css": "/blog-build/static/css/main.2083eb69.css",
+    "main.js": "/blog-build/static/js/main.0a773972.js",
     "static/js/453.64be9eb2.chunk.js": "/blog-build/static/js/453.64be9eb2.chunk.js",
     "static/media/abc.png": "/blog-build/static/media/abc.45ea13280544b5652423.png",
-    "static/media/hp_img.png": "/blog-build/static/media/hp_img.45ea13280544b5652423.png",
     "static/media/Donna_3.jpeg": "/blog-build/static/media/Donna_3.ff9cdda3271d40c30f3e.jpeg",
     "static/media/HariPriya_Profile_img.jpg": "/blog-build/static/media/HariPriya_Profile_img.d0a9cbea4ac187fe4081.jpg",
     "static/media/Donna_3_cut.jpeg": "/blog-build/static/media/Donna_3_cut.27b719112edf6957ebb1.jpeg",
     "static/media/logo.svg": "/blog-build/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/blog-build/index.html",
-    "main.815d1243.css.map": "/blog-build/static/css/main.815d1243.css.map",
-    "main.b83b7385.js.map": "/blog-build/static/js/main.b83b7385.js.map",
+    "main.2083eb69.css.map": "/blog-build/static/css/main.2083eb69.css.map",
+    "main.0a773972.js.map": "/blog-build/static/js/main.0a773972.js.map",
     "453.64be9eb2.chunk.js.map": "/blog-build/static/js/453.64be9eb2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.815d1243.css",
-    "static/js/main.b83b7385.js"
+    "static/css/main.2083eb69.css",
+    "static/js/main.0a773972.js"
   ]
 }
