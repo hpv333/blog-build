@@ -1,0 +1,25 @@
+
+.footer {
+    display: flex;
+    position: sticky;
+    bottom: 0;
+    padding: 0.6rem;
+    width: 100%;
+    opacity: 1;
+
+    color:white;
+    justify-content: space-around;
+    font-size: 30;}
+  
+  .footer-items{
+    display: flex;
+    position:relative;
+    
+  }
+  
+  .footer_social{
+    display: flex;
+    justify-content: space-between;
+    width:50%;
+  }
+  

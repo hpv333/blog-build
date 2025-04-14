@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.scss';
 import Resume from './components/Resume';
 import Header from './components/Header';
+import Header2 from './components/Header2';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Homepage from './pages/HomePage'
@@ -9,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <Header/>
+       <Header2/>
         <Homepage/>
         <br/>
         <br/>

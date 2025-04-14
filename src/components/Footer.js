@@ -3,9 +3,10 @@ import '../App.scss';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import CodeIcon from '@mui/icons-material/Code';
+import './Footer.css';
 const Footer = () => {
   return (
-    <div className="footer">
+    <div className="footer" style={{ backgroundColor: 'var(--base-theme)',}}>
       <div className="footer_social">
 
     

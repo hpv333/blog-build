@@ -1,5 +1,10 @@
-$base-theme: #3279d2
-
+$base-theme: #ae7fc4;
+:root{
+  --base-theme: #a86ac5; // Define the variable here
+  --base-theme-light: #f2e6f0;
+  --base-theme-dark: #8b5c8b;
+  
+}
 ;.App {
   text-align: center;
 }
@@ -43,27 +48,3 @@ $base-theme: #3279d2
   white-space: pre-line; /* This will render the newline character */
 }
 
-
-.footer {
-  display: flex;
-  position: sticky;
-  bottom: 0;
-  padding: 0.6rem;
-  width: 100%;
-  opacity: 1;
-  background-color:$base-theme; //Use variable properly
-  color:white;
-  justify-content: space-around;
-  font-size: 30;}
-
-.footer-items{
-  display: flex;
-  position:relative;
-  
-}
-
-.footer_social{
-  display: flex;
-  justify-content: space-between;
-  width:50%;
-}

@@ -28,7 +28,7 @@ const settings = [
   // 'Logout'
 ];
 
-function Header() {
+function Header2() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -62,9 +62,9 @@ function Header() {
   };
 
   return (
-    <AppBar position="fixed" sx={{backgroundColor: "$base-theme", marginTop:"0rem", top:"0rem", marginLeft:"5rem"
+    <AppBar position="fixed" sx={{ backgroundColor: 'var(--base-theme)', marginTop:"0rem", top:"0rem", marginLeft:"5rem", 
     }}>
-      <Container maxWidth="" sx={{backgroundColor:  "$base-theme", marginTop:"0rem"
+      <Container maxWidth="" sx={{ backgroundColor: 'var(--base-theme)', marginTop:"0rem"
       }}>
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -83,7 +83,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            Hari Priya Vedala uyyy
+            Hari Priya Vedala 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -188,4 +188,4 @@ function Header() {
     </AppBar>
   );
 }
-export default Header;
+export default Header2;
