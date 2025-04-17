@@ -6,6 +6,7 @@ import Header2 from './components/Header2';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Homepage from './pages/HomePage'
+import Profile_image from './components/Profile_imageHC/Profile_image';
 function App() {
   return (
     <div className="App">
@@ -15,6 +16,7 @@ function App() {
         <br/>
         <br/>
      {/* <Resume />  */}
+    <Profile_image/>
        <Footer/>
         {/* <p>
           Edit <code>src/App.js</code> and save to reload.

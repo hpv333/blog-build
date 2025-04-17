@@ -1,9 +1,11 @@
-$base-theme: #ae7fc4;
-:root{
-  --base-theme: #a86ac5; // Define the variable here
-  --base-theme-light: #f2e6f0;
-  --base-theme-dark: #8b5c8b;
-  
+$base-theme: #f4a261; // Updated to an orange-based color
+:root {
+  --base-theme: #c26a23; // Main orange theme color
+  --base-theme-light: #fff4eb; // Light orange shade
+  --base-theme-dark: #e76f51; // Dark orange shade
+
+  --base-theme-font-color-light: #ffe8d6; // Light font color
+  --base-theme-font-color-dark: #6a2c1a; // Dark font color
 }
 ;.App {
   text-align: center;

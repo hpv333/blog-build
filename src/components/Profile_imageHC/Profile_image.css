@@ -1,0 +1,48 @@
+
+  .profile-container {
+    position: relative;
+    width:  800px;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+/*   
+  .background-shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #f5efe5;
+    border-radius: 70% 90% 70% 40% /
+                   60% 90% 40% 50%;
+    z-index: 1;
+  } */
+  
+  .gold-border {
+    position: absolute;
+    width: 84%;
+    height: 84%;
+    border-radius: 90% 50% 70% 40% /
+                   60% 90% 40% 90%;
+    border: 4px solid #c0a265;
+    z-index: 7;
+    transform: translateX(+18px);
+   /* You can tweak this value */
+  /* top: 0px;   Optional: if you want to move vertically too */
+  }
+  
+  .profile-frame {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+    z-index: 3;
+    border-radius: 70% 50% 70% 40% /
+                   60% 40% 40% 90%;
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }

@@ -33,7 +33,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import { Stack } from "@mui/material";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-
+import NameCard from './NameCard';
 
 import Chip from '@mui/material/Chip';
 import WebIcon from '@mui/icons-material/Web';
@@ -63,29 +63,11 @@ const HomePage = () => {
 
   return (
     <div className='homepage flex w-full' >
-      
-      <Box sx={{ width: "100%", marginTop: "100px" }}>
+      <Box sx={{ width: "100%", marginTop: "10px" }}>
         {/* Blog Section */}
-        <section id="blog" className="min-h-screen p-8">
-          <div variant="h4" component="h2" gutterBottom>
-            {/* Blog */}
-          </div>
-          <Paper elevation={3} sx ={{ display: 'flex' , marginY: "2rem" , marginX:"2rem", paddingX:"2rem", paddingY:"2rem"}}>
-           <Avatar alt="HP Sharp" src={HariPriya_Profile_img} sx={{display: 'flex' ,height:"30rem", width:"30rem"}}/>
-         
-
-           <div style={{display: 'flex' , flexDirection: 'column' , width:"100%", paddingX:"2rem", paddingY:"2rem", justifyContent: 'center', alignItems: 'center'}}> 
-            <h3 style={{ display: 'flex' ,fontFamily: "Georgia, serif"  , fontSize: "2.4rem", fontWeight: "bold"}}>
-              Hari Priya Vedala
-            </h3>
-            <p style={{ display: 'flex' , fontFamily: "Georgia, serif"  , fontSize: "1.4rem", fontWeight: "bold"}}>
-            Graduate Assistant, UNT CVAD |<br/> MS CS @ UNT Denton TX US |
-            <br/> Full Stack Web Developer
-            </p>
-           </div>
+        <section id="blog" className="min-h-screen p-8 h-8">
+      <NameCard />
           
-          </Paper>
-          {/* Add your blog content here */}
         </section>
 
 
