@@ -10,26 +10,12 @@ import Profile_image from './components/Profile_imageHC/Profile_image';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-       <Header2/>
-        <Homepage/>
-        <br/>
-        <br/>
-     {/* <Resume />  */}
-    <Profile_image/>
-       <Footer/>
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      </header>
+      <Header2 />
+      <div className="content-wrapper">
+        <Homepage />
+        {/* <Profile_image /> */}
+
+      </div>
     </div>
   );
 }

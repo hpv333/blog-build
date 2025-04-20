@@ -16,7 +16,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 const pages = [
   // 'Products', 
   // 'Pricing', 
-  'Blog', 
+'Blog', 
 'Projects', 
 'Work Experience', 
 'Skills', 
@@ -43,31 +43,32 @@ function Header2() {
   const handleCloseNavMenu = (section) => {
     setAnchorElNav(null);
     if (typeof section === 'string') {
-      const element = document.getElementById(section.toLowerCase().replace(' ', '-'));
-      if (element) {
-        const headerOffset = 80; // Adjust this value based on your header height
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
-        window.scrollTo({
-          top: offsetPosition,
+      const sectionId = section.toLowerCase().replace(' ', '-');
+      const target = document.getElementById(sectionId);
+      const scrollContainer = document.querySelector('.horizontal-scroll-container');
+  
+      if (target && scrollContainer) {
+        scrollContainer.scrollTo({
+          left: target.offsetLeft,
           behavior: 'smooth'
         });
       }
     }
   };
+  
+  
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: 'var(--base-theme)', marginTop:"0rem", top:"0rem", marginLeft:"5rem", 
+    <AppBar position="fixed" sx={{ backgroundColor: 'var(--base-theme)', marginTop:"0rem", top:"0rem", marginLeft:"5rem", height:"1%"
     }}>
       <Container maxWidth="" sx={{ backgroundColor: 'var(--base-theme)', marginTop:"0rem"
       }}>
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' , width:"40px"}, mr: 0}} />
           <Typography
             variant="h6"
             noWrap
@@ -75,12 +76,16 @@ function Header2() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
+              display: 'flex',
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.15rem',
               color: 'inherit',
               textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: { xs: '150px', sm: '250px', md: '100%' },
             }}
           >
             Hari Priya Vedala 

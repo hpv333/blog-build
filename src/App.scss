@@ -1,12 +1,38 @@
-$base-theme: #f4a261; // Updated to an orange-based color
-:root {
-  --base-theme: #c26a23; // Main orange theme color
-  --base-theme-light: #fff4eb; // Light orange shade
-  --base-theme-dark: #e76f51; // Dark orange shade
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --base-theme-font-color-light: #ffe8d6; // Light font color
-  --base-theme-font-color-dark: #6a2c1a; // Dark font color
+$base-theme-dollar: #f4a261; // Updated to an orange-based color
+
+
+
+:root {
+  // Core Theme Colors
+  --base-theme: #c26a23;                    // Main orange theme color
+  --base-theme-light: #fff4eb;              // Light orange shade
+  --base-theme-dark: #e76f51;               // Dark orange shade
+
+  // Background Gradients
+  --bg-gradient-light: #ffe8d6;             // Matches text-amber-50
+  --bg-gradient-dark: #f9bb8b;              // Matches to-orange-200
+
+  // Font Colors
+  --base-theme-font-color-dark: #6a2c1a;    // Dark font color
+  --base-theme-font-color-light: #ffe8d6;   // Light font color
+
+  // Text & Accent
+  --primary-color: #c26a23;                 // Matches text-orange-700
+  --primary-text: #6a2c1a;                  // Matches text-orange-900
+  --accent-color: #f97316;                  // Matches text-orange-500
+  --heading-font-family: "Georgia, serif";
+  --body-font-family:"Merriweather", serif;
+
+  // Effects
+  --hover-transition: all 0.3s ease;
+  --hover-transform: translateY(-0.5rem);
+  --hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
 ;.App {
   text-align: center;
 }
@@ -14,6 +40,15 @@ $base-theme: #f4a261; // Updated to an orange-based color
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.content-wrapper {
+  margin-top: 100px;
+  height: 100vh;
+  overflow: hidden;
+ // or padding-top: 80px;
+  @media (max-width: 768px) {
+    margin-top: 124px;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -50,3 +85,23 @@ $base-theme: #f4a261; // Updated to an orange-based color
   white-space: pre-line; /* This will render the newline character */
 }
 
+.horizontal-scroll-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  width: 100vw;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+
+.scroll-section {
+  flex: 0 0 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow-y: auto; // In case your content is taller than 100vh
+  background: linear-gradient(to left, var(--base-theme-light), var(--bg-gradient-dark));
+}

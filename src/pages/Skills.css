@@ -1,0 +1,91 @@
+
+.skills-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, var(--bg-gradient-light), var(--bg-gradient-dark));
+  }
+  
+  .skills-heading {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--primary-text); /* uses --primary-text from App.scss */
+    font-family: var(--heading-font-family);
+    position: relative;
+    margin-bottom: 3rem;
+  }
+  
+  .heading-underline {
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    margin: 0.5rem auto 0;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .skill-card {
+    background: var(--base-theme-light);
+    color: var(--primary-text);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: var(--hover-transition);
+  }
+  
+  .skill-card:hover {
+    transform: var(--hover-transform);
+    box-shadow: var(--hover-shadow);
+  }
+  
+  .skill-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 1rem;
+    color: var(--primary-text); /* uses --primary-text from App.scss */
+    font-family: var(--heading-font-family);
+  }
+  
+  .skill-icon {
+    font-size: 2rem;
+    margin-right: 0.75rem;
+  }
+  
+  .skill-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 0;
+  }
+  
+  .skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .skill-chip {
+    background-color: var(--bg-gradient-dark);
+    color: var(--primary-text);
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin: 0.25rem 0;
+    font-size: 1rem;
+    transition: background 0.3s, color 0.3s;
+    font-family: var(--body-font-family);
+  }
+  
+  .skill-chip:hover {
+    background-color: var(--primary-color);
+    color: var(--base-theme-font-color-light);
+    cursor: default;
+  }
