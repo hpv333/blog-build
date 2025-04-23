@@ -6,24 +6,9 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import abc from "../images/abc.png"; 
 import Donna_3 from "../images/Donna_3.jpeg";
 import Donna_3_cut from "../images/Donna_3_cut.jpeg";
-import Paper from '@mui/material/Paper';
-import Avatar from '@mui/material/Avatar';
-import HariPriya_Profile_img from '../images/HariPriya_Profile_img.jpg';
 
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import FastfoodIcon from '@mui/icons-material/Fastfood';
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
-import HotelIcon from '@mui/icons-material/Hotel';
-import RepeatIcon from '@mui/icons-material/Repeat';
-import Typography from '@mui/material/Typography';
-import CircleIcon from '@mui/icons-material/Circle'; 
-import Dialog_Alert from '../components/Dialog_Alert';
+import EduCert from './EduCert'
+
 
 import { Grid2, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import CodeIcon from "@mui/icons-material/Code";
@@ -92,144 +77,7 @@ const HomePage = () => {
 <br />
         {/* Education Section */}
         <section id="education" className="scroll-section  bg-gradient-to-b from-gray-50 to-white">
-          <Container maxWidth="lg">
-            <Typography
-              variant="h3"
-              component="h2"
-              sx={{
-                color: 'primary.main',
-                fontWeight: 600,
-                mb: 6,
-                textAlign: 'center',
-                position: 'relative',
-                '&:after': {
-                  content: '""',
-                  position: 'absolute',
-                  bottom: -16,
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: 100,
-                  height: 4,
-                  bgcolor: 'primary.main',
-                  borderRadius: 2
-                }
-              }}
-            >
-              Education & Certifications
-            </Typography>
-
-            {/* University Card */}
-            <Card 
-              elevation={3}
-              sx={{
-                mb: 6,
-                transition: 'transform 0.3s',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                }
-              }}
-            >
-              <CardContent sx={{ p: 4 }}>
-                <Grid2 container spacing={3} alignItems="center">
-                  <Grid2 item xs={12} md={2}>
-                    <Avatar 
-                      src="/unt-logo.png" 
-                      alt="UNT Logo"
-                      sx={{ 
-                        width: 100, 
-                        height: 100,
-                        margin: 'auto'
-                      }}
-                    />
-                  </Grid2>
-                  <Grid2 item xs={12} md={7}>
-                    <Typography variant="h4" color="primary.main" gutterBottom>
-                      University of North Texas
-                    </Typography>
-                    <Typography variant="h6" gutterBottom>
-                      Master of Science, Computer Science
-                    </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
-                      Denton, TX
-                    </Typography>
-                  </Grid2>
-                  <Grid2 item xs={12} md={3} sx={{ textAlign: { md: 'right' } }}>
-                    <Typography variant="h6" color="text.secondary" gutterBottom>
-                      2023 — Present
-                    </Typography>
-                    <Chip
-                      label="CGPA: 4.00"
-                      color="success"
-                      sx={{ 
-                        p: 2,
-                        '& .MuiChip-label': { 
-                          fontSize: '1.1rem',
-                          fontWeight: 'bold'
-                        }
-                      }}
-                    />
-                  </Grid2>
-                </Grid2>
-              </CardContent>
-            </Card>
-
-            {/* Certifications */}
-            <Typography variant="h4" gutterBottom sx={{ color: 'primary.main', mb: 4 }}>
-              Professional Certifications
-            </Typography>
-            <Grid2 container spacing={3}>
-              {[
-                {
-                  title: 'Front-End Development',
-                  issuer: 'Meta',
-                  date: 'February 2024',
-                  icon: <WebIcon />
-                },
-                {
-                  title: 'AZ-900',
-                  issuer: 'Microsoft',
-                  date: 'February 2024',
-                  icon: <CloudIcon />
-                },
-                {
-                  title: 'MySQL Essential Training',
-                  issuer: 'LinkedIn',
-                  date: 'October 2024',
-                  icon: <StorageIcon />
-                }
-              ].map((cert, index) => (
-                <Grid2 item xs={12} md={4} key={index}>
-                  <Card
-                    elevation={3}
-                    sx={{
-                      height: '100%',
-                      transition: 'transform 0.3s, box-shadow 0.3s',
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: 8
-                      }
-                    }}
-                  >
-                    <CardContent sx={{ p: 3 }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                        <Avatar sx={{ bgcolor: 'primary.main', mr: 2 }}>
-                          {cert.icon}
-                        </Avatar>
-                        <Box>
-                          <Typography variant="h6" gutterBottom>
-                            {cert.title}
-                          </Typography>
-                          <Typography variant="subtitle2" color="text.secondary">
-                            {cert.issuer} • {cert.date}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </CardContent>
-                  </Card>
-                </Grid2>
-              ))}
-            </Grid2>
-          </Container>
+          <EduCert/>
         </section>
     
 
