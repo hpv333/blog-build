@@ -4,7 +4,7 @@ import './Skills.css';
 const Skills = () => {
   return (
     <div className="skills-section">
-      <h2 className="skills-heading">
+      <h2 className="text-4xl font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] mb-6">
         Technical Skills
         <span className="heading-underline"></span>
       </h2>

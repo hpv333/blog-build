@@ -50,10 +50,11 @@ const EduCert = () => {
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12 relative">
-          <h2 className="text-4xl font-bold text-[#c26a23] font-['Georgia',_serif] mb-6">
+          <h2 className="text-4xl font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] mb-6">
             Education & Certifications
           </h2>
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-[#c26a23] rounded-full"></div>
+    
+          <div className="absolute bottom-0 mt-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-[#c26a23] rounded-full"></div>
         </div>
 
         {/* University Card */}

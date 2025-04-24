@@ -117,7 +117,7 @@ const Projects = () => {
   return (
     <section className={`py-16 ${styles.gradientBg} scroll-section`}>
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className={`text-4xl font-bold mb-3 text-center ${styles.primaryText}`}>
+        <h2 className="text-4xl font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] mb-6">
           Featured Projects
         </h2>
         <p className={`text-center ${styles.accent} mb-12 max-w-2xl mx-auto`}>

@@ -4,6 +4,7 @@ import LaptopMacIcon from "@mui/icons-material/LaptopMac";
 
 import abc from "../images/abc.png";
 import Donna_3_cut from "../images/Donna_3_cut.jpeg";
+import './Skills.css';
 
 const timelineData = [
   {
@@ -41,13 +42,10 @@ const itemData = [
 const WorkExperience = () => {
   return (
     <section className="scroll-section">
-      <Typography
-        variant="h4"
-        component="h2"
-        sx={{ mb: 4, color: "var(--base-theme-font-color-dark)" }}
-      >
-        Work Experience
-      </Typography>
+      <h2 className="text-4xl font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] mb-6">
+        Technical Skills
+        <span className="heading-underline"></span>
+      </h2>
 
       <Stack spacing={4} sx={{ mb: 6 }}>
         {timelineData.map((item, idx) => (
