@@ -1,44 +1,19 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import { useState } from 'react';
 
-const pages = [
-  // 'Products', 
-  // 'Pricing', 
-'Blog', 
-'Projects', 
-'Work Experience', 
-'Skills', 
-'Education',];
-const settings = [
-  'Profile', 
-  // 'Account', 
-  // 'Dashboard', 
-  // 'Logout'
-];
+const Header2 = () => {
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
-function Header2() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const pages = ['Blog', 'Projects', 'Work Experience', 'Skills', 'Education'];
+  const settings = ['Profile'];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
 
   const handleCloseNavMenu = (section) => {
     setAnchorElNav(null);
@@ -52,145 +27,122 @@ function Header2() {
           left: target.offsetLeft,
           behavior: 'smooth'
         });
+      } else if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 70,
+          behavior: 'smooth'
+        });
       }
     }
   };
-  
-  
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: 'var(--base-theme)', marginTop:"0rem", top:"0rem", marginLeft:"5rem", height:"1%"
-    }}>
-      <Container maxWidth="" sx={{ backgroundColor: 'var(--base-theme)', marginTop:"0rem"
-      }}>
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' , width:"40px"}, mr: 0}} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: 'flex',
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.15rem',
-              color: 'inherit',
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              maxWidth: { xs: '150px', sm: '250px', md: '100%' },
-            }}
-          >
-            Hari Priya Vedala 
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
+    <div className="fixed top-0 left-0 right-0 z-50 flex bg-transparent">
+      {/* AppBar with original color scheme (using var(--base-theme)) */}
+      <div className="w-full flex flex-col" style={{ backgroundColor: 'var(--base-theme)' }}>
+        <div className="flex items-center justify-between px-4 md:px-8 py-2">
+          {/* Logo and Title - Always visible */}
+          <div className="flex items-center">
+            {/* AdbIcon equivalent */}
+            <svg className="hidden md:block h-8 w-8 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 16l-3-3 3-3v6zM17.59 5H22V3h-6v6h2V5.41l6 6V18h-2v1a3 3 0 01-3 3H5a3 3 0 01-3-3v-3h2v3a1 1 0 001 1h14a1 1 0 001-1v-7.41l-6-6z"/>
+            </svg>
+            
+            {/* Typography for Desktop */}
+            <h1 className="hidden md:block font-mono font-bold tracking-widest text-white text-xl">
+              Hari Priya Vedala
+            </h1>
+            
+            {/* Mobile Logo */}
+            <svg className="block md:hidden h-8 w-8 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 16l-3-3 3-3v6zM17.59 5H22V3h-6v6h2V5.41l6 6V18h-2v1a3 3 0 01-3 3H5a3 3 0 01-3-3v-3h2v3a1 1 0 001 1h14a1 1 0 001-1v-7.41l-6-6z"/>
+            </svg>
+            
+            {/* Mobile Title */}
+            <h1 className="block md:hidden font-mono font-bold tracking-wider text-white text-lg truncate max-w-xs">
+              LOGO
+            </h1>
+          </div>
+          
+          {/* Mobile Menu Icon */}
+          <div className="flex md:hidden">
+            <button 
+              className="text-white p-2"
               onClick={handleOpenNavMenu}
-              color="inherit"
             >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
-            >
+              <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center justify-center flex-1 mx-10">
+            <div className="flex justify-around space-x-4 w-full max-w-2xl">
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
-                </MenuItem>
+                <button
+                  key={page}
+                  onClick={() => handleCloseNavMenu(page)}
+                  className="my-2 text-white px-4 py-2 hover:bg-white hover:bg-opacity-10 rounded transition"
+                >
+                  {page}
+                </button>
               ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'space-around' }, marginX:'10rem' }}>
-        {pages.map((page) => (
-          <Button
-            key={page}
-            onClick={() => handleCloseNavMenu(page)}
-            sx={{ my: 2, color: 'white', display: 'block' }}
-          >
-            {page}
-          </Button>
-        ))}
-      </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+            </div>
+          </div>
+          
+          {/* Avatar - Always visible */}
+          <div className="flex items-center">
+            <button
+              onClick={handleOpenUserMenu}
+              className="p-0 rounded-full"
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>
-                    <a href= "https://flowcv.com/resume/lqghji3921">
-                    {setting}
-                    </a>
-                    </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+              <img 
+                className="h-10 w-10 rounded-full"
+                src="/api/placeholder/40/40" 
+                alt="User avatar" 
+              />
+            </button>
+          </div>
+        </div>
+        
+        {/* Mobile Menu Dropdown */}
+        {Boolean(anchorElNav) && (
+          <div className="md:hidden bg-black bg-opacity-90 shadow-lg py-2">
+            {pages.map((page) => (
+              <button
+                key={page}
+                onClick={() => handleCloseNavMenu(page)}
+                className="block w-full text-left px-4 py-2 text-white hover:bg-white hover:bg-opacity-10"
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+        )}
+        
+        {/* User Menu Dropdown */}
+        {Boolean(anchorElUser) && (
+          <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-50" style={{ top: '100%' }}>
+            {settings.map((setting) => (
+              <a
+                key={setting}
+                href="https://flowcv.com/resume/lqghji3921"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                onClick={handleCloseUserMenu}
+              >
+                {setting}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
   );
-}
+};
+
 export default Header2;

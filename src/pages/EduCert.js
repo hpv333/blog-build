@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 // Icons for certifications
 const WebIcon = () => (
@@ -24,6 +24,24 @@ const StorageIcon = () => (
 );
 
 const EduCert = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Handle responsive behavior
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Set initial state
+    handleResize();
+    
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Clean up
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const certifications = [
     {
       title: 'Front-End Development',
@@ -46,36 +64,36 @@ const EduCert = () => {
   ];
 
   return (
-    <section id="education" className="py-16 bg-gradient-to-b from-[#fff4eb] to-white scroll-section font-['Merriweather',_serif]">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="education" className="py-12 md:py-16 bg-gradient-to-b from-[#fff4eb] to-white scroll-section font-['Merriweather',_serif]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center mb-12 relative">
-          <h2 className="text-4xl font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] mb-6">
+        <div className="text-center mb-8 md:mb-12 relative">
+          <h2 className="text-3xl md:text-4xl font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] mb-6">
             Education & Certifications
           </h2>
     
-          <div className="absolute bottom-0 mt-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-[#c26a23] rounded-full"></div>
+          <div className="absolute bottom-0 mt-4 left-1/2 transform -translate-x-1/2 w-16 md:w-24 h-1 bg-[#c26a23] rounded-full"></div>
         </div>
 
         {/* University Card */}
-        <div className="bg-white rounded-xl shadow-lg mb-12 transform transition-transform duration-300 hover:-translate-y-2 overflow-hidden">
-          <div className="p-6">
-            <div className="flex flex-col md:flex-row items-center gap-6">
+        <div className="bg-white rounded-xl shadow-lg mb-8 md:mb-12 transform transition-transform duration-300 hover:-translate-y-2 overflow-hidden">
+          <div className="p-4 md:p-6">
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
               {/* Logo */}
-              <div className="md:w-1/6 flex justify-center mb-4 md:mb-0">
+              <div className="w-full md:w-1/6 flex justify-center mb-4 md:mb-0">
                 <img 
-                  src="/unt-logo.png" 
+                  src="/api/placeholder/96/96" 
                   alt="UNT Logo" 
-                  className="w-24 h-24 rounded-full object-contain"
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-full object-contain"
                 />
               </div>
               
               {/* Details */}
-              <div className="md:w-1/2 text-center md:text-left">
-                <h3 className="text-2xl font-bold text-[#c26a23] font-['Georgia',_serif] mb-1">
+              <div className="w-full md:w-1/2 text-center md:text-left">
+                <h3 className="text-xl md:text-2xl font-bold text-[#c26a23] font-['Georgia',_serif] mb-1">
                   University of North Texas
                 </h3>
-                <h4 className="text-xl mb-1">
+                <h4 className="text-lg md:text-xl mb-1">
                   Master of Science, Computer Science
                 </h4>
                 <p className="text-gray-600">
@@ -84,8 +102,8 @@ const EduCert = () => {
               </div>
               
               {/* Timeline & GPA */}
-              <div className="md:w-1/3 flex flex-col items-center md:items-end">
-                <p className="text-lg text-gray-600 mb-2">
+              <div className="w-full md:w-1/3 flex flex-col items-center md:items-end mt-4 md:mt-0">
+                <p className="text-base md:text-lg text-gray-600 mb-2">
                   2023 — Present
                 </p>
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-white bg-green-600 font-bold text-sm">
@@ -97,26 +115,26 @@ const EduCert = () => {
         </div>
 
         {/* Certifications Section */}
-        <div className="mb-10">
-          <h3 className="text-2xl font-bold text-[#c26a23] font-['Georgia',_serif] mb-6">
+        <div className="mb-6 md:mb-10">
+          <h3 className="text-xl md:text-2xl font-bold text-[#c26a23] font-['Georgia',_serif] mb-4 md:mb-6 text-center md:text-left">
             Professional Certifications
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {certifications.map((cert, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl shadow-lg p-5 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="bg-white rounded-xl shadow-lg p-4 md:p-5 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
                 <div className="flex items-start">
-                  <div className="p-3 bg-[#fff4eb] text-[#c26a23] rounded-full mr-4">
+                  <div className="p-2 md:p-3 bg-[#fff4eb] text-[#c26a23] rounded-full mr-3 md:mr-4 flex-shrink-0">
                     {cert.icon}
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold font-['Georgia',_serif] mb-1">
+                    <h4 className="text-base md:text-lg font-bold font-['Georgia',_serif] mb-1">
                       {cert.title}
                     </h4>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-xs md:text-sm text-gray-600">
                       {cert.issuer} • {cert.date}
                     </p>
                   </div>
