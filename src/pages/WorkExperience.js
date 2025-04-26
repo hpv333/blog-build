@@ -119,7 +119,7 @@ const WorkExperience = () => {
       {/* Projects Section */}
       <div className="mt-24">
         <h3 className="text-2xl font-bold text-[var(--base-theme-font-color-dark)] mb-8 text-center">
-          Featured Projects
+         Gallary of AI Projects Tested 
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import Avatar from '@mui/material/Avatar';
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CodeIcon from "@mui/icons-material/Code";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -27,20 +26,21 @@ const NameCard = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center w-full min-h-screen p-4">
+    <div className="flex justify-center items-center w-full py-8 px-4">
       <div className="text-center max-w-6xl mx-auto">
         <div 
           className="flex flex-col items-center p-4 md:p-8" 
           style={{ color: 'var(--base-theme-font-color-dark)' }}
         >
-          <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} items-center justify-center gap-4 md:gap-8 lg:gap-12 py-4 md:py-8`}>
-            <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/2 p-4">
-              <h3 
-                className="font-['Georgia',_serif] text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+          <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} items-center justify-center gap-8 md:gap-10 lg:gap-16 py-4 md:py-8 w-full`}>
+            {/* Text content */}
+            <div className="flex flex-col items-center text-center w-full md:w-1/2 p-4">
+              <h1 
+                className="font-['Georgia',_serif] text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
                 style={{ lineHeight: 1.2 }}
               >
                 Hari Priya Vedala
-              </h3>
+              </h1>
               
               <p className="font-['Georgia',_serif] text-lg md:text-xl lg:text-2xl font-bold mb-6 max-w-md">
                 {isMobile ? (
@@ -60,7 +60,7 @@ const NameCard = () => {
                 )}
               </p>
               
-              <div className="flex justify-center md:justify-start gap-6 md:gap-8">
+              <div className="flex justify-center gap-6 md:gap-8 w-full">
                 <a 
                   href="https://www.linkedin.com/in/haripriyav3/" 
                   className="transition-transform hover:scale-110"
@@ -102,20 +102,11 @@ const NameCard = () => {
               </div>
             </div>
             
-            {/* Profile Image - Resizes based on screen size */}
-            <div className="relative flex justify-center items-center w-full md:w-auto">
-              <div
-                className={`${
-                  isMobile ? 'w-104 h-104' : isTablet ? 'w-80 h-90' : 'w-96 h-96'
-                } rounded-full overflow-hidden shadow-xl`}
-               x
-              >
-                        <Profile_image className={`${isMobile ? 'object-cover':'object-contain'} 'w-full h-full`}/>
-                {/* <img 
-                  src="/api/placeholder/384/384" 
-                  alt="Hari Priya Vedala" 
-                  className="w-full h-full object-cover"
-                /> */}
+            {/* Profile Image - using your custom component which handles its own responsiveness */}
+            <div className="flex justify-center items-center">
+              {/* Pass scale props to reduce size for larger screens */}
+              <div className={isMobile ? "w-full" : "w-4/5 transform scale-90"}>
+                <Profile_image />
               </div>
             </div>
           </div>

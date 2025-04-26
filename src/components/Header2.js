@@ -47,9 +47,18 @@ const Header2 = () => {
         <div className="flex items-center justify-between px-4 md:px-8 py-2">
           {/* Logo and Title - Always visible */}
           <div className="flex items-center">
-            {/* AdbIcon equivalent */}
-            <svg className="hidden md:block h-8 w-8 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M5 16l-3-3 3-3v6zM17.59 5H22V3h-6v6h2V5.41l6 6V18h-2v1a3 3 0 01-3 3H5a3 3 0 01-3-3v-3h2v3a1 1 0 001 1h14a1 1 0 001-1v-7.41l-6-6z"/>
+            {/* New Logo SVG - Desktop */}
+            <svg 
+              className="hidden md:block h-8 w-8 mr-2 text-white" 
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="1.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <path d="M13 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V16M3 16V14M8.87263 4.20378C8.80442 4.20789 8.73575 4.20997 8.66667 4.20997C7.64218 4.20997 6.70766 3.75244 5.99998 3C5.2923 3.75241 4.3578 4.20993 3.33333 4.20993C3.26426 4.20993 3.19559 4.20785 3.12738 4.20373C3.04423 4.58531 3 4.98548 3 5.39793C3 7.61207 4.27477 9.4725 6 10C7.72523 9.4725 9 7.61207 9 5.39793C9 4.9855 8.95577 4.58534 8.87263 4.20378ZM2 16H22V16.8C22 17.9201 22 18.4802 21.782 18.908C21.5903 19.2843 21.2843 19.5903 20.908 19.782C20.4802 20 19.9201 20 18.8 20H5.2C4.0799 20 3.51984 20 3.09202 19.782C2.71569 19.5903 2.40973 19.2843 2.21799 18.908C2 18.4802 2 17.9201 2 16.8V16Z" />
             </svg>
             
             {/* Typography for Desktop */}
@@ -57,14 +66,23 @@ const Header2 = () => {
               Hari Priya Vedala
             </h1>
             
-            {/* Mobile Logo */}
-            <svg className="block md:hidden h-8 w-8 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M5 16l-3-3 3-3v6zM17.59 5H22V3h-6v6h2V5.41l6 6V18h-2v1a3 3 0 01-3 3H5a3 3 0 01-3-3v-3h2v3a1 1 0 001 1h14a1 1 0 001-1v-7.41l-6-6z"/>
+            {/* New Logo SVG - Mobile */}
+            <svg 
+              className="block md:hidden h-8 w-8 mr-2 text-white" 
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="1.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <path d="M13 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V16M3 16V14M8.87263 4.20378C8.80442 4.20789 8.73575 4.20997 8.66667 4.20997C7.64218 4.20997 6.70766 3.75244 5.99998 3C5.2923 3.75241 4.3578 4.20993 3.33333 4.20993C3.26426 4.20993 3.19559 4.20785 3.12738 4.20373C3.04423 4.58531 3 4.98548 3 5.39793C3 7.61207 4.27477 9.4725 6 10C7.72523 9.4725 9 7.61207 9 5.39793C9 4.9855 8.95577 4.58534 8.87263 4.20378ZM2 16H22V16.8C22 17.9201 22 18.4802 21.782 18.908C21.5903 19.2843 21.2843 19.5903 20.908 19.782C20.4802 20 19.9201 20 18.8 20H5.2C4.0799 20 3.51984 20 3.09202 19.782C2.71569 19.5903 2.40973 19.2843 2.21799 18.908C2 18.4802 2 17.9201 2 16.8V16Z" />
             </svg>
             
             {/* Mobile Title */}
             <h1 className="block md:hidden font-mono font-bold tracking-wider text-white text-lg truncate max-w-xs">
-              LOGO
+              Hari Priya Vedala
             </h1>
           </div>
           
@@ -95,19 +113,17 @@ const Header2 = () => {
             </div>
           </div>
           
-          {/* Avatar - Always visible */}
-          <div className="flex items-center">
+          {/* User Icon */}
+          {/* <div className="flex items-center">
             <button
               onClick={handleOpenUserMenu}
               className="p-0 rounded-full"
             >
-              <img 
-                className="h-10 w-10 rounded-full"
-                src="/api/placeholder/40/40" 
-                alt="User avatar" 
-              />
+              <div className="flex items-center justify-center h-10 w-10 rounded-full bg-amber-100 text-amber-800">
+                <span className="text-sm font-semibold">User</span>
+              </div>
             </button>
-          </div>
+          </div> */}
         </div>
         
         {/* Mobile Menu Dropdown */}
@@ -121,22 +137,6 @@ const Header2 = () => {
               >
                 {page}
               </button>
-            ))}
-          </div>
-        )}
-        
-        {/* User Menu Dropdown */}
-        {Boolean(anchorElUser) && (
-          <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-50" style={{ top: '100%' }}>
-            {settings.map((setting) => (
-              <a
-                key={setting}
-                href="https://flowcv.com/resume/lqghji3921"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                onClick={handleCloseUserMenu}
-              >
-                {setting}
-              </a>
             ))}
           </div>
         )}

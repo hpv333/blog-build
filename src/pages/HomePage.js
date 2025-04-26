@@ -64,24 +64,16 @@ const HomePage = () => {
 
         <section id="work-experience" className="scroll-section">
          <WorkExperience/>
-        </section>
-    
-       
-
-   
-       
+        </section>   
 
       <section id="skills" className="scroll-section ">
         <Skills/>
       </section>
-<br />
+       
         {/* Education Section */}
         <section id="education" className="scroll-section  bg-gradient-to-b from-gray-50 to-white">
           <EduCert/>
         </section>
-    
-
-
 
   </div>
   )

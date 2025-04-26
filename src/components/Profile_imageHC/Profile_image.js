@@ -33,20 +33,20 @@ const Profile_image = () => {
         width: '350px',
         height: '320px'
       };
-    } else if (dimensions.width < 1024) { // Tablet
+    } else if (dimensions.width <= 1024) { // Tablet
       return {
-        width: '450px',
+        width: '350px',
         height: '380px'
       };
     } else if (dimensions.width < 1280) { // Small desktop
       return {
-        width: '600px',
+        width: ' 400px',
         height: '450px'
       };
     } else { // Large desktop
       return {
-        width: '800px',
-        height: '550px'
+        width: '700px',
+        height: '750px'
       };
     }
   };

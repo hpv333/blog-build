@@ -64,7 +64,7 @@ const EduCert = () => {
   ];
 
   return (
-    <section id="education" className="py-12 md:py-16 bg-gradient-to-b from-[#fff4eb] to-white scroll-section font-['Merriweather',_serif]">
+    <section id="education" className="py-12 md:py-16 bg-gradient-to-br from-amber-50 to-orange-200 font-['Merriweather',_serif]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-8 md:mb-12 relative">
@@ -79,18 +79,9 @@ const EduCert = () => {
         <div className="bg-white rounded-xl shadow-lg mb-8 md:mb-12 transform transition-transform duration-300 hover:-translate-y-2 overflow-hidden">
           <div className="p-4 md:p-6">
             <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-              {/* Logo */}
-              <div className="w-full md:w-1/6 flex justify-center mb-4 md:mb-0">
-                <img 
-                  src="/api/placeholder/96/96" 
-                  alt="UNT Logo" 
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-full object-contain"
-                />
-              </div>
-              
               {/* Details */}
               <div className="w-full md:w-1/2 text-center md:text-left">
-                <h3 className="text-xl md:text-2xl font-bold text-[#c26a23] font-['Georgia',_serif] mb-1">
+                <h3 className="text-xl md:text-2xl font-bold text-[var(--base-theme)] font-['Georgia',_serif] mb-1">
                   University of North Texas
                 </h3>
                 <h4 className="text-lg md:text-xl mb-1">
@@ -116,7 +107,7 @@ const EduCert = () => {
 
         {/* Certifications Section */}
         <div className="mb-6 md:mb-10">
-          <h3 className="text-xl md:text-2xl font-bold text-[#c26a23] font-['Georgia',_serif] mb-4 md:mb-6 text-center md:text-left">
+          <h3 className="text-xl md:text-2xl font-bold text-[var(--base-theme)] font-['Georgia',_serif] mb-4 md:mb-6 text-center md:text-left">
             Professional Certifications
           </h3>
           
@@ -127,7 +118,7 @@ const EduCert = () => {
                 className="bg-white rounded-xl shadow-lg p-4 md:p-5 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
                 <div className="flex items-start">
-                  <div className="p-2 md:p-3 bg-[#fff4eb] text-[#c26a23] rounded-full mr-3 md:mr-4 flex-shrink-0">
+                  <div className="p-2 md:p-3 bg-[var(--base-theme-light)] text-[var(--base-theme)] rounded-full mr-3 md:mr-4 flex-shrink-0">
                     {cert.icon}
                   </div>
                   <div>
