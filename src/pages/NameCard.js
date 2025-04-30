@@ -5,14 +5,21 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import Profile_image from '../components/Profile_imageHC/Profile_image';
 
 const NameCard = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
+  const [screenSize, setScreenSize] = useState('desktop');
 
-  // Handle responsive behavior
+  // Enhanced responsive behavior with more breakpoints
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
+      const width = window.innerWidth;
+      if (width < 640) {
+        setScreenSize('mobile');
+      } else if (width < 1024) {
+        setScreenSize('tablet');
+      } else if (width < 1536) {
+        setScreenSize('desktop');
+      } else {
+        setScreenSize('large');
+      }
     };
     
     // Set initial state
@@ -25,24 +32,53 @@ const NameCard = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Determine layout based on screen size
+  const isMobile = screenSize === 'mobile';
+  const isTablet = screenSize === 'tablet';
+  const isLarge = screenSize === 'large';
+
+  // Dynamic icon size based on screen size
+  const getIconSize = () => {
+    switch (screenSize) {
+      case 'mobile': return 32;
+      case 'tablet': return 36;
+      case 'desktop': return 40;
+      case 'large': return 44;
+      default: return 40;
+    }
+  };
+
+  // Dynamic component size and spacing
+  const getTextWidth = () => {
+    if (isMobile) return 'w-full';
+    if (isTablet) return 'w-3/5';
+    return 'w-2/3';
+  };
+
+  const getImageWidth = () => {
+    if (isMobile) return 'w-full';
+    if (isTablet) return 'w-2/5';
+    return 'w-1/3';
+  };
+
   return (
-    <div className="flex justify-center items-center w-full py-8 px-4">
-      <div className="text-center max-w-6xl mx-auto">
+    <div className="flex justify-center items-center w-full py-4 sm:py-6 md:py-8 lg:py-10 px-3 sm:px-4 md:px-6 lg:px-8">
+      <div className="w-full max-w-7xl mx-auto">
         <div 
-          className="flex flex-col items-center p-4 md:p-8" 
+          className={`flex flex-col items-center p-3 sm:p-4 md:p-6 lg:p-8`} 
           style={{ color: 'var(--base-theme-font-color-dark)' }}
         >
-          <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} items-center justify-center gap-8 md:gap-10 lg:gap-16 py-4 md:py-8 w-full`}>
-            {/* Text content */}
-            <div className="flex flex-col items-center text-center w-full md:w-1/2 p-4">
+          <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} items-center ${isMobile ? 'justify-center' : 'justify-between'} gap-4 sm:gap-6 md:gap-8 lg:gap-10 w-full`}>
+            {/* Text content - expanded width */}
+            <div className={`flex flex-col ${isMobile ? 'items-center text-center' : 'items-start text-left'} ${getTextWidth()} p-2 sm:p-3 md:p-4`}>
               <h1 
-                className="font-['Georgia',_serif] text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
-                style={{ lineHeight: 1.2 }}
+                className="font-['Georgia',_serif] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-2 sm:mb-3 md:mb-4 lg:mb-5"
+                style={{ lineHeight: 1.1 }}
               >
                 Hari Priya Vedala
               </h1>
               
-              <p className="font-['Georgia',_serif] text-lg md:text-xl lg:text-2xl font-bold mb-6 max-w-md">
+              <p className="font-['Georgia',_serif] text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 sm:mb-5 md:mb-6 lg:mb-8 max-w-3xl">
                 {isMobile ? (
                   // Mobile layout - stacked
                   <>
@@ -60,7 +96,7 @@ const NameCard = () => {
                 )}
               </p>
               
-              <div className="flex justify-center gap-6 md:gap-8 w-full">
+              <div className={`flex ${isMobile ? 'justify-center' : 'justify-start'} gap-5 sm:gap-6 md:gap-8 lg:gap-10`}>
                 <a 
                   href="https://www.linkedin.com/in/haripriyav3/" 
                   className="transition-transform hover:scale-110"
@@ -69,7 +105,7 @@ const NameCard = () => {
                   <LinkedInIcon 
                     style={{ 
                       color: "var(--base-theme-font-color-dark)",
-                      fontSize: isMobile ? 32 : 40 
+                      fontSize: getIconSize() 
                     }}
                   />
                 </a>
@@ -82,7 +118,7 @@ const NameCard = () => {
                   <CodeIcon 
                     style={{ 
                       color: "var(--base-theme-font-color-dark)",
-                      fontSize: isMobile ? 32 : 40 
+                      fontSize: getIconSize() 
                     }}
                   />
                 </a>
@@ -95,17 +131,16 @@ const NameCard = () => {
                   <GitHubIcon 
                     style={{ 
                       color: "var(--base-theme-font-color-dark)",
-                      fontSize: isMobile ? 32 : 40 
+                      fontSize: getIconSize() 
                     }}
                   />
                 </a>
               </div>
             </div>
             
-            {/* Profile Image - using your custom component which handles its own responsiveness */}
-            <div className="flex justify-center items-center">
-              {/* Pass scale props to reduce size for larger screens */}
-              <div className={isMobile ? "w-full" : "w-4/5 transform scale-90"}>
+            {/* Profile Image with responsive sizing */}
+            <div className={`flex justify-center items-center ${getImageWidth()}`}>
+              <div className={`w-full ${!isMobile && "transform scale-90"} ${isLarge && "scale-95"}`}>
                 <Profile_image />
               </div>
             </div>

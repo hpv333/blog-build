@@ -1,5 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRef } from 'react';
 
 // Custom styling to match the orange theme
 const styles = {
@@ -363,149 +364,160 @@ const Icons = {
 
 const Projects = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
-  
-  // Function to render the image section based on whether image is available
+  const [screenSize, setScreenSize] = useState('desktop');
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    // Function to detect screen size
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setScreenSize('mobile');
+      } else if (width < 768) {
+        setScreenSize('small-tablet');
+      } else if (width < 1024) {
+        setScreenSize('tablet');
+      } else if (width < 1280) {
+        setScreenSize('desktop');
+      } else if (width < 1536) {
+        setScreenSize('large-desktop');
+      } else {
+        setScreenSize('ultrawide');
+      }
+    };
+    
+    // Set initial screen size
+    handleResize();
+    
+    // Add event listener with debounce for performance
+    let timeoutId;
+    const debouncedResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleResize, 100);
+    };
+    
+    window.addEventListener('resize', debouncedResize);
+    
+    // Setup intersection observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    // Clean up
+    return () => {
+      window.removeEventListener('resize', debouncedResize);
+      clearTimeout(timeoutId);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Get number of columns based on screen size
+  const getGridColumns = () => {
+    if (screenSize === 'mobile' || screenSize === 'small-tablet') return 1;
+    if (screenSize === 'tablet' || screenSize === 'desktop') return 2;
+    return 3; // large-desktop and ultrawide
+  };
+
+  // Function to render card header
   const renderCardHeader = (proj, idx) => {
-    if (proj.image) {
-      // Full image header for Unified Scheduler and Digital Signage
-      return (
-        <div className="relative h-48 overflow-hidden">
-          <div className={`absolute inset-0 ${hoveredCard === idx ? 'opacity-60' : 'opacity-80'} transition-opacity duration-300`}>
-            <img 
-              src={proj.image} 
-              alt={proj.title} 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          
-          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          
-          <div className="absolute bottom-0 left-0 p-4">
-            <h3 className={`text-2xl font-bold text-white mb-1`}>
-              {proj.title}
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {proj.chips.map((chip, i) => (
-                <span 
-                  key={i}
-                  className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${styles.lightText} bg-orange-600/70 backdrop-blur-sm`}
-                >
-                  <span className="mr-1">
-                    {Icons[chip.icon]()}
-                  </span>
-                  {chip.label}
-                </span>
-              ))}
-            </div>
-          </div>
-          
-          <div className={`absolute top-3 right-3 ${styles.primaryBg} ${styles.lightText} px-3 py-1 rounded-full text-xs font-medium shadow-md`}>
-            {proj.date}
-          </div>
-        </div>
-      );
-    } else {
-      // Simplified header for projects without images
-      return (
-        <div className={`p-4 ${styles.primaryLight}`}>
-          <h3 className={`text-2xl font-bold ${styles.primaryColor} mb-2`}>
-            {proj.title}
-          </h3>
-          
-          <div className="flex flex-wrap gap-2 mb-2">
-            {proj.chips.map((chip, i) => (
-              <span 
-                key={i}
-                className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${styles.primaryColor} bg-orange-200`}
-              >
-                <span className="mr-1">
-                  {Icons[chip.icon]()}
-                </span>
-                {chip.label}
+    return (
+      <div className={`p-4 sm:p-5 lg:p-6 ${styles.primaryLight}`}>
+        <h3 className={`text-xl sm:text-2xl md:text-2xl font-bold ${styles.primaryColor} mb-2 text-left`}>
+          {proj.title}
+        </h3>
+        
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-2.5 mb-2 justify-start">
+          {proj.chips.map((chip, i) => (
+            <span 
+              key={i}
+              className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${styles.primaryColor} bg-orange-200`}
+            >
+              <span className="mr-1">
+                {Icons[chip.icon]()}
               </span>
-            ))}
-          </div>
-          
+              {chip.label}
+            </span>
+          ))}
+        </div>
+        
+        <div className="flex items-center justify-between">
           <div className={`${styles.primaryBg} ${styles.lightText} px-3 py-1 rounded-full text-xs font-medium shadow-md inline-block`}>
             {proj.date}
           </div>
-        </div>
-      );
-    }
-  };
-
-  // Function to render action buttons based on available links
-  const renderActionButtons = (proj) => {
-    // If project has links defined
-    if (proj.links) {
-      return (
-        <div className="flex space-x-2">
-          {proj.links.github && (
+          
+          {proj.links && proj.links.github && (
             <a 
               href={proj.links.github}
               target="_blank" 
               rel="noopener noreferrer"
-              className={`p-2 ${styles.primaryLight} ${styles.primaryColor} rounded-full hover:bg-orange-100 transition-colors`}
+              className={`p-2 ${styles.primaryBg} ${styles.lightText} rounded-full hover:bg-orange-500 transition-colors inline-flex`}
               aria-label="GitHub Repository"
             >
               {Icons.github()}
             </a>
           )}
-          {proj.links.figma && (
-            <a 
-              href={proj.links.figma}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={`p-2 ${styles.primaryLight} ${styles.primaryColor} rounded-full hover:bg-orange-100 transition-colors`}
-              aria-label="Figma Prototype"
-            >
-              {Icons.figma()}
-            </a>
-          )}
-          {proj.links.website && (
-            <a 
-              href={proj.links.website}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={`p-2 ${styles.primaryLight} ${styles.primaryColor} rounded-full hover:bg-orange-100 transition-colors`}
-              aria-label="Live Website"
-            >
-              {Icons.link()}
-            </a>
-          )}
         </div>
-      );
-    } 
-    // If no links are defined, show placeholder buttons
-    else {
-      return (
-        <div className="opacity-50 flex space-x-2">
-          <span className={`p-2 ${styles.primaryLight} ${styles.primaryColor} rounded-full cursor-not-allowed`}>
-            {Icons.github()}
-          </span>
-          <span className={`p-2 ${styles.primaryLight} ${styles.primaryColor} rounded-full cursor-not-allowed`}>
-            {Icons.link()}
-          </span>
-        </div>
-      );
-    }
+      </div>
+    );
   };
-  
-  return (
-    <section className={`py-16 ${styles.gradientBg} `}>
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] mb-6">
-          Featured Projects
-        </h2>
-        <p className={`text-center ${styles.accent} mb-12 max-w-2xl mx-auto`}>
-          Innovative solutions designed with passion and precision
-        </p>
+ 
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+  return (
+    <section 
+      ref={sectionRef}
+      className={`py-12 sm:py-16 md:py-20 lg:py-24 ${styles.gradientBg}`}
+    >
+      <div className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+        {/* Section Header with animated transition */}
+        <div className={`transform transition-all duration-700 text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          <h2 
+            className="font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] mb-3 sm:mb-4 md:mb-5"
+            style={{
+              fontSize: screenSize === 'mobile' ? '2rem' : screenSize === 'small-tablet' ? '2.5rem' : '3rem',
+              transition: 'font-size 0.3s ease'
+            }}
+          >
+            Featured Projects
+          </h2>
+          
+          <p 
+            className={`${styles.accent} mx-auto max-w-lg md:max-w-xl lg:max-w-2xl mb-8 sm:mb-10 md:mb-12`}
+            style={{
+              fontSize: screenSize === 'mobile' ? '1rem' : '1.125rem',
+              transition: 'font-size 0.3s ease'
+            }}
+          >
+            Innovative solutions designed with passion and precision
+          </p>
+        </div>
+
+        {/* Projects Grid */}
+        <div 
+          className="grid gap-6 sm:gap-8 md:gap-10"
+          style={{ 
+            gridTemplateColumns: `repeat(${getGridColumns()}, minmax(0, 1fr))`,
+            transition: 'all 0.3s ease-in-out' 
+          }}
+        >
           {projects.map((proj, idx) => (
             <div 
               key={idx} 
-              className="relative"
+              className={`transform transition-all duration-700 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              style={{ transitionDelay: `${idx * 150}ms` }}
               onMouseEnter={() => setHoveredCard(idx)}
               onMouseLeave={() => setHoveredCard(null)}
             >
@@ -516,22 +528,18 @@ const Projects = () => {
                 {renderCardHeader(proj, idx)}
 
                 {/* Content Section */}
-                <div className="p-6">
-                  <div className="flex justify-end mb-4">
-                    {renderActionButtons(proj)}
-                  </div>
-
-                  <ul className="space-y-4">
+                <div className="p-4 sm:p-5 md:p-6">
+                  <ul className="space-y-3 sm:space-y-4">
                     {proj.points.map((pt, i) => (
-                      <li key={i} className="flex group">
+                      <li key={i} className="flex group text-left">
                         <span className={`mt-1 mr-3 text-green-500 flex-shrink-0 ${hoveredCard === idx ? 'scale-110' : ''} transition-transform duration-300`}>
                           {Icons.check()}
                         </span>
                         <div>
-                          <h4 className={`font-bold ${styles.primaryColor} group-hover:text-orange-800 transition-colors`}>
+                          <h4 className={`font-bold ${styles.primaryColor} group-hover:text-orange-800 transition-colors text-base sm:text-lg`}>
                             {pt.title}
                           </h4>
-                          <p className="text-gray-700 text-sm">
+                          <p className="text-gray-700 text-xs sm:text-sm">
                             {pt.description}
                           </p>
                         </div>

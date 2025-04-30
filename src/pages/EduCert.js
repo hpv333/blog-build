@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // Icons for certifications
 const WebIcon = () => (
@@ -24,23 +24,118 @@ const StorageIcon = () => (
 );
 
 const EduCert = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [screenSize, setScreenSize] = useState('desktop');
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-  // Handle responsive behavior
+  // Enhanced responsive behavior with detailed breakpoints
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      const width = window.innerWidth;
+      if (width < 640) {
+        setScreenSize('mobile');
+      } else if (width < 768) {
+        setScreenSize('small-tablet');
+      } else if (width < 1024) {
+        setScreenSize('tablet');
+      } else if (width < 1280) {
+        setScreenSize('desktop');
+      } else if (width < 1536) {
+        setScreenSize('large-desktop');
+      } else {
+        setScreenSize('ultrawide');
+      }
     };
     
     // Set initial state
     handleResize();
     
-    // Add event listener
-    window.addEventListener('resize', handleResize);
+    // Add event listener with debounce for performance
+    let timeoutId;
+    const debouncedResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleResize, 100);
+    };
+    
+    window.addEventListener('resize', debouncedResize);
+    
+    // Setup intersection observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
     
     // Clean up
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', debouncedResize);
+      clearTimeout(timeoutId);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
+
+  // Responsive icon size based on screen size
+  const getIconSize = () => {
+    switch (screenSize) {
+      case 'mobile': return '20px';
+      case 'small-tablet': return '22px';
+      case 'tablet': return '24px';
+      case 'desktop': 
+      case 'large-desktop':
+      case 'ultrawide': return '26px';
+      default: return '24px';
+    }
+  };
+
+  // Dynamic font size and spacing based on screen size
+  const getStyles = () => {
+    const baseScale = {
+      mobile: 0.85,
+      'small-tablet': 0.9,
+      tablet: 1,
+      desktop: 1.05,
+      'large-desktop': 1.1,
+      ultrawide: 1.15
+    };
+    
+    const scale = baseScale[screenSize] || 1;
+    
+    return {
+      heading: {
+        fontSize: `${2.25 * scale}rem`,
+        marginBottom: `${1.5 * scale}rem`
+      },
+      subheading: {
+        fontSize: `${1.75 * scale}rem`,
+        marginBottom: `${1 * scale}rem`
+      },
+      uniTitle: {
+        fontSize: `${1.5 * scale}rem`
+      },
+      uniSubtitle: {
+        fontSize: `${1.25 * scale}rem`
+      },
+      certTitle: {
+        fontSize: `${1.1 * scale}rem`
+      },
+      padding: `${1 * scale}rem ${1.25 * scale}rem`,
+      gap: `${0.75 * scale}rem`,
+      iconSize: getIconSize()
+    };
+  };
+
+  const styles = getStyles();
 
   const certifications = [
     {
@@ -50,9 +145,9 @@ const EduCert = () => {
       icon: <WebIcon />
     },
     {
-      title: 'AZ-900',
+      title: 'Microsoft Azure Fundamentals',
       issuer: 'Microsoft',
-      date: 'April 2024',
+      date: 'May 2024',
       icon: <CloudIcon />
     },
     {
@@ -63,41 +158,85 @@ const EduCert = () => {
     }
   ];
 
+  // Determine grid columns based on screen width and content
+  const getCertColumns = () => {
+    if (screenSize === 'mobile') return 1;
+    if (screenSize === 'small-tablet' || screenSize === 'tablet') return 2;
+    return 3;
+  };
+
   return (
-    <section id="education" className="py-12 md:py-16 bg-gradient-to-br from-amber-50 to-orange-200 font-['Merriweather',_serif]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Section Header */}
-        <div className="text-center mb-8 md:mb-12 relative">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] mb-6">
+    <section 
+      ref={sectionRef}
+      id="education" 
+      className="py-12 sm:py-14 md:py-16 lg:py-20 bg-gradient-to-br from-amber-50 to-orange-200 font-['Merriweather',_serif]"
+      style={{ transition: 'padding 0.3s ease' }}
+    >
+      <div className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+        {/* Section Header with animated underline */}
+        <div 
+          className={`text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 relative transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+        >
+          <h2 
+            className="font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif]"
+            style={{
+              fontSize: styles.heading.fontSize,
+              marginBottom: styles.heading.marginBottom,
+              transition: 'font-size 0.3s ease, margin 0.3s ease'
+            }}
+          >
             Education & Certifications
           </h2>
     
-          <div className="absolute bottom-0 mt-4 left-1/2 transform -translate-x-1/2 w-16 md:w-24 h-1 bg-[#c26a23] rounded-full"></div>
+          <div 
+            className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 bg-[#c26a23] rounded-full transition-all duration-1000 ease-out ${isVisible ? 'w-16 sm:w-20 md:w-24 lg:w-28' : 'w-0'}`}
+          ></div>
         </div>
 
         {/* University Card */}
-        <div className="bg-white rounded-xl shadow-lg mb-8 md:mb-12 transform transition-transform duration-300 hover:-translate-y-2 overflow-hidden">
-          <div className="p-4 md:p-6">
-            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-              {/* Details */}
-              <div className="w-full md:w-1/2 text-center md:text-left">
-                <h3 className="text-xl md:text-2xl font-bold text-[var(--base-theme)] font-['Georgia',_serif] mb-1">
+        <div 
+          className={`bg-white rounded-xl shadow-lg mb-8 sm:mb-10 md:mb-12 lg:mb-16 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          style={{ transitionDelay: '200ms' }}
+        >
+          <div 
+            className="p-4 sm:p-5 md:p-6 lg:p-8"
+            style={{ transition: 'padding 0.3s ease' }}
+          >
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 lg:gap-8">
+              {/* University Details */}
+              <div className="w-full md:w-3/5 lg:w-2/3 text-center md:text-left">
+                <h3 
+                  className="font-bold text-[var(--base-theme)] font-['Georgia',_serif] mb-1 sm:mb-2"
+                  style={{
+                    fontSize: styles.uniTitle.fontSize,
+                    transition: 'font-size 0.3s ease'
+                  }}
+                >
                   University of North Texas
                 </h3>
-                <h4 className="text-lg md:text-xl mb-1">
+                <h4 
+                  className="mb-1 sm:mb-2"
+                  style={{
+                    fontSize: styles.uniSubtitle.fontSize,
+                    transition: 'font-size 0.3s ease'
+                  }}
+                >
                   Master of Science, Computer Science
                 </h4>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-sm sm:text-base" style={{ transition: 'font-size 0.3s ease' }}>
                   Denton, TX
                 </p>
               </div>
               
               {/* Timeline & GPA */}
-              <div className="w-full md:w-1/3 flex flex-col items-center md:items-end mt-4 md:mt-0">
-                <p className="text-base md:text-lg text-gray-600 mb-2">
-                  2023 — Present
+              <div className="w-full md:w-2/5 lg:w-1/3 flex flex-col items-center md:items-end mt-4 md:mt-0">
+                <p className="text-gray-600 mb-2 sm:mb-3" style={{ transition: 'font-size 0.3s ease' }}>
+                  Aug 2023 — May 2025 
                 </p>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-white bg-green-600 font-bold text-sm">
+                <span 
+                  className="inline-flex items-center px-3 py-1 rounded-full text-white bg-green-600 font-bold"
+                  style={{ fontSize: screenSize === 'mobile' ? '0.75rem' : '0.875rem' }}
+                >
                   CGPA: 4.00
                 </span>
               </div>
@@ -106,26 +245,64 @@ const EduCert = () => {
         </div>
 
         {/* Certifications Section */}
-        <div className="mb-6 md:mb-10">
-          <h3 className="text-xl md:text-2xl font-bold text-[var(--base-theme)] font-['Georgia',_serif] mb-4 md:mb-6 text-center md:text-left">
+        <div 
+          className={`mb-6 sm:mb-8 md:mb-10 transform transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          style={{ transitionDelay: '400ms' }}
+        >
+          <h3 
+            className="font-bold text-[var(--base-theme)] font-['Georgia',_serif] mb-4 sm:mb-5 md:mb-6 lg:mb-8 text-center md:text-left"
+            style={{
+              fontSize: styles.subheading.fontSize,
+              transition: 'font-size 0.3s ease, margin 0.3s ease'
+            }}
+          >
             Professional Certifications
           </h3>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <div 
+            className="grid gap-4 sm:gap-5 md:gap-6 lg:gap-8"
+            style={{ 
+              gridTemplateColumns: `repeat(${getCertColumns()}, minmax(0, 1fr))`,
+              transition: 'grid-template-columns 0.3s ease, gap 0.3s ease'
+            }}
+          >
             {certifications.map((cert, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl shadow-lg p-4 md:p-5 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="bg-white rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+                style={{ 
+                  padding: styles.padding,
+                  transitionDelay: `${500 + index * 100}ms`,
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)'
+                }}
               >
-                <div className="flex items-start">
-                  <div className="p-2 md:p-3 bg-[var(--base-theme-light)] text-[var(--base-theme)] rounded-full mr-3 md:mr-4 flex-shrink-0">
-                    {cert.icon}
+                <div className="flex items-start" style={{ gap: styles.gap }}>
+                  <div 
+                    className="p-2 sm:p-2.5 md:p-3 bg-[var(--base-theme-light)] text-[var(--base-theme)] rounded-full flex-shrink-0"
+                    style={{ transition: 'padding 0.3s ease' }}
+                  >
+                    <div style={{ width: styles.iconSize, height: styles.iconSize }}>
+                      {cert.icon}
+                    </div>
                   </div>
                   <div>
-                    <h4 className="text-base md:text-lg font-bold font-['Georgia',_serif] mb-1">
+                    <h4 
+                      className="font-bold font-['Georgia',_serif] mb-1"
+                      style={{
+                        fontSize: styles.certTitle.fontSize,
+                        transition: 'font-size 0.3s ease'
+                      }}
+                    >
                       {cert.title}
                     </h4>
-                    <p className="text-xs md:text-sm text-gray-600">
+                    <p 
+                      className="text-gray-600"
+                      style={{ 
+                        fontSize: screenSize === 'mobile' ? '0.75rem' : '0.875rem',
+                        transition: 'font-size 0.3s ease'
+                      }}
+                    >
                       {cert.issuer} • {cert.date}
                     </p>
                   </div>
