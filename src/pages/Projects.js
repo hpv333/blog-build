@@ -70,6 +70,36 @@ const projects = [
     ]
   },
   {
+    title: 'Statuscheck - Device Monitoring Dashboard',
+    date: 'May 2025 — Present',
+    image: null,
+    chips: [
+      { label: 'JavaScript', icon: 'code' },
+      { label: 'Docker', icon: 'globe' },
+      { label: 'IoT Monitoring', icon: 'search' },
+    ],
+    points: [
+      {
+        title: 'Universal Monitoring App',
+        description:
+          'Developed a web-based dashboard for monitoring and managing IoT and network-connected devices using ping, SSH, and HTTP checks.'
+      },
+      {
+        title: 'User-Friendly Admin Features',
+        description:
+          'Implemented device filtering, email alerts, and real-time status updates; supports frontend-backend separation and Docker deployment.'
+      },
+      {
+        title: 'Configurable and Scalable',
+        description:
+          'Utilized JSON-based configuration for flexible deployment across varied networks and enabled role-based admin access via hashed credentials.'
+      }
+    ],
+    links: {
+      github: 'https://github.com/divisionbyinfinity/statuscheck'
+    }
+  },
+  {
     title: 'Walmart Time Series Sales Prediction',
     date: 'October 2024 — Present',
     image: null,
