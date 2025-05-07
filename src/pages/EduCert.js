@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-
 // Icons for certifications
 const WebIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -137,26 +136,130 @@ const EduCert = () => {
 
   const styles = getStyles();
 
-  const certifications = [
-    {
-      title: 'Front-End Development',
-      issuer: 'Meta',
-      date: 'February 2024',
-      icon: <WebIcon />
-    },
-    {
-      title: 'Microsoft Azure Fundamentals',
-      issuer: 'Microsoft',
-      date: 'May 2024',
-      icon: <CloudIcon />
-    },
-    {
-      title: 'MySQL Essential Training',
-      issuer: 'LinkedIn',
-      date: 'October 2024',
-      icon: <StorageIcon />
-    }
-  ];
+ const certifications = [
+  {
+    title: 'Cybersecurity Terminology',
+    issuer: 'LinkedIn',
+    date: 'May 2025',
+   
+    image: require('../images/certificates/cybersecurity_hp.jpg'),
+    icon: 'https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg'
+  },
+  {
+    title: 'Docker Foundations Professional Certificate',
+    issuer: 'Docker, Inc',
+    date: 'May 2025',
+    image: require('../images/certificates/docker_hp.jpg'),
+    icon: 'https://cdn.worldvectorlogo.com/logos/docker.svg'
+  },
+  {
+    title: 'Goldman Sachs - Operations Job Simulation',
+    issuer: 'Forage',
+    date: 'May 2025',
+    image: require('../images/certificates/Forage_HP_Job_Stimulation.jpg'),
+    icon: require('../images/goldman-sachs.svg')
+  },
+  {
+    title: 'Introduction to Front-End Development',
+    issuer: 'Meta',
+    date: 'April 2025',
+    image: require('../images/certificates/introtofrontendev_hp.jpg'),
+    icon: 'https://cdn.worldvectorlogo.com/logos/meta-2.svg'
+  },
+  {
+    title: 'Learning Docker',
+    issuer: 'LinkedIn Learning',
+    date: 'April 2025',
+    image: require('../images/certificates/LearningDocker_hp.jpg'),
+    icon: 'https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg'
+  },
+  {
+    title: 'Spring Boot 3 Essential Training',
+    issuer: 'LinkedIn',
+    date: 'April 2025',
+    image: require('../images/certificates/Springboot3_hp.jpg'),
+    icon: 'https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg'
+  },
+  {
+    title: 'Demystifying AI',
+    issuer: 'University of North Texas',
+    date: 'March 2025',
+    image: require('../images/certificates/DemystifyingAI_hp.jpg'),
+    icon: 'https://upload.wikimedia.org/wikipedia/en/0/0c/University_of_North_Texas_logo.svg'
+  },
+  {
+    title: 'Microsoft Azure Fundamentals',
+    issuer: 'Microsoft',
+    date: 'May 2024',
+    image: require('../images/certificates/microsoftazurefundamentals_hp.jpg'),
+    icon: 'https://cdn.worldvectorlogo.com/logos/microsoft-azure-1.svg'
+  },
+  {
+    title: 'MySQL Essential Training',
+    issuer: 'LinkedIn',
+    date: 'October 2024',
+    image: <StorageIcon />,
+    icon: 'https://cdn.worldvectorlogo.com/logos/mysql-6.svg'
+  },
+  {
+    title: 'GitHub Essential Training: 1 The Basics',
+    issuer: 'LinkedIn',
+    date: 'September 2024',
+    image: <WebIcon />,
+    icon: 'https://cdn.worldvectorlogo.com/logos/github-icon-1.svg'
+  },
+  {
+    title: 'EF SET English Certificate (C2 Proficient)',
+    issuer: 'EF SET',
+    date: 'October 2021',
+    image: <WebIcon />,
+    icon: 'https://www.efset.org/images/efset-english-certification-badge.png'
+  },
+  {
+    title: 'Python Data Structures',
+    issuer: 'University of Michigan',
+    date: 'June 2021',
+    image: <StorageIcon />,
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/University_of_Michigan_logo.svg'
+  },
+  {
+    title: 'Python Data Structures',
+    issuer: 'Coursera',
+    date: 'June 2021',
+    image: <StorageIcon />,
+    icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
+  },
+  {
+    title: 'Programming for Everybody (Getting Started with Python)',
+    issuer: 'Coursera',
+    date: 'August 2020',
+    image: <WebIcon />,
+    icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
+  },
+  {
+    title: 'Programming for Everybody',
+    issuer: 'University of Michigan',
+    date: 'August 2020',
+    image: <WebIcon />,
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/University_of_Michigan_logo.svg'
+  },
+  {
+    title: 'Introduction to Software Product Management',
+    issuer: 'Coursera',
+    date: 'June 2020',
+    image: <WebIcon />,
+    icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
+  },
+  {
+    title: 'Data Science Math Skills',
+    issuer: 'Coursera',
+    date: 'June 2020',
+    image: <StorageIcon />,
+    icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
+  }
+];
+
+  
 
   // Determine grid columns based on screen width and content
   const getCertColumns = () => {
@@ -277,13 +380,26 @@ const EduCert = () => {
                   transform: isVisible ? 'translateY(0)' : 'translateY(20px)'
                 }}
               >
-                <div className="flex items-start" style={{ gap: styles.gap }}>
+                {cert.image? (
+                  <img 
+                src={cert.image} 
+                alt={cert.title} 
+                className="w-full object-cover"
+                style={{ height: styles.imageSize }}
+              />
+                ): null}
+                <div className="flex items-start mt-4" style={{ gap: styles.gap }}>
                   <div 
                     className="p-2 sm:p-2.5 md:p-3 bg-[var(--base-theme-light)] text-[var(--base-theme)] rounded-full flex-shrink-0"
                     style={{ transition: 'padding 0.3s ease' }}
                   >
                     <div style={{ width: styles.iconSize, height: styles.iconSize }}>
-                      {cert.icon}
+                    <img 
+                src={cert.icon} 
+                alt="." 
+                className="w-full object-cover"
+                style={{ height: styles.imageSize }}
+              />
                     </div>
                   </div>
                   <div>
