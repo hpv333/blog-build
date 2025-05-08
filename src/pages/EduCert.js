@@ -1,4 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import { ReactComponent as GoldmanSachsIcon } from '../images/goldman-sachs.svg';
+import { ReactComponent as MetaIcon } from '../images/meta-logo.svg';
+import { ReactComponent as MicrosoftIcon } from  '../images/microsoft-logo.svg';
+
+
 // Icons for certifications
 const WebIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -92,8 +97,8 @@ const EduCert = () => {
       case 'tablet': return '24px';
       case 'desktop': 
       case 'large-desktop':
-      case 'ultrawide': return '26px';
-      default: return '24px';
+      case 'ultrawide': return '34px';
+      default: return '34px';
     }
   };
 
@@ -157,14 +162,23 @@ const EduCert = () => {
     issuer: 'Forage',
     date: 'May 2025',
     image: require('../images/certificates/Forage_HP_Job_Stimulation.jpg'),
-    icon: require('../images/goldman-sachs.svg')
+    icon: (
+      <div style={{ width: '100%', height: '100%' }}>
+        <GoldmanSachsIcon style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+      </div>
+    )
+
   },
   {
     title: 'Introduction to Front-End Development',
     issuer: 'Meta',
     date: 'April 2025',
     image: require('../images/certificates/introtofrontendev_hp.jpg'),
-    icon: 'https://cdn.worldvectorlogo.com/logos/meta-2.svg'
+    icon: (
+      <div style={{ width: '100%', height: '100%' }}>
+        <MetaIcon style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+      </div>
+    )
   },
   {
     title: 'Learning Docker',
@@ -185,78 +199,83 @@ const EduCert = () => {
     issuer: 'University of North Texas',
     date: 'March 2025',
     image: require('../images/certificates/DemystifyingAI_hp.jpg'),
-    icon: 'https://upload.wikimedia.org/wikipedia/en/0/0c/University_of_North_Texas_logo.svg'
+    icon: require('../images/unt-logo.png')
   },
   {
     title: 'Microsoft Azure Fundamentals',
     issuer: 'Microsoft',
     date: 'May 2024',
     image: require('../images/certificates/microsoftazurefundamentals_hp.jpg'),
-    icon: 'https://cdn.worldvectorlogo.com/logos/microsoft-azure-1.svg'
+    icon: (
+      <div style={{ width: '100%', height: '100%' }}>
+        <MicrosoftIcon style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+      </div>
+    ),
+    // icon: require('../images/microsoft-logo.svg')
   },
   {
     title: 'MySQL Essential Training',
     issuer: 'LinkedIn',
     date: 'October 2024',
-    image: <StorageIcon />,
-    icon: 'https://cdn.worldvectorlogo.com/logos/mysql-6.svg'
+    image: require('../images/certificates/MySQL-hp.jpg'),
+    icon: 'https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg'
   },
   {
     title: 'GitHub Essential Training: 1 The Basics',
     issuer: 'LinkedIn',
     date: 'September 2024',
-    image: <WebIcon />,
+    image: require('../images/certificates/GithubEssentials_hp.jpg'),
     icon: 'https://cdn.worldvectorlogo.com/logos/github-icon-1.svg'
   },
-  {
-    title: 'EF SET English Certificate (C2 Proficient)',
-    issuer: 'EF SET',
-    date: 'October 2021',
-    image: <WebIcon />,
-    icon: 'https://www.efset.org/images/efset-english-certification-badge.png'
-  },
-  {
-    title: 'Python Data Structures',
-    issuer: 'University of Michigan',
-    date: 'June 2021',
-    image: <StorageIcon />,
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/University_of_Michigan_logo.svg'
-  },
-  {
-    title: 'Python Data Structures',
-    issuer: 'Coursera',
-    date: 'June 2021',
-    image: <StorageIcon />,
-    icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
-  },
-  {
-    title: 'Programming for Everybody (Getting Started with Python)',
-    issuer: 'Coursera',
-    date: 'August 2020',
-    image: <WebIcon />,
-    icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
-  },
-  {
-    title: 'Programming for Everybody',
-    issuer: 'University of Michigan',
-    date: 'August 2020',
-    image: <WebIcon />,
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/University_of_Michigan_logo.svg'
-  },
-  {
-    title: 'Introduction to Software Product Management',
-    issuer: 'Coursera',
-    date: 'June 2020',
-    image: <WebIcon />,
-    icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
-  },
-  {
-    title: 'Data Science Math Skills',
-    issuer: 'Coursera',
-    date: 'June 2020',
-    image: <StorageIcon />,
-    icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
-  }
+  // {
+  //   title: 'EF SET English Certificate (C2 Proficient)',
+  //   issuer: 'EF SET',
+  //   date: 'October 2021',
+  //   image: <WebIcon />,
+  //   icon: 'https://www.efset.org/images/efset-english-certification-badge.png'
+  // },
+  // {
+  //   title: 'Python Data Structures',
+  //   issuer: 'University of Michigan',
+  //   date: 'June 2021',
+  //   image: <StorageIcon />,
+  //   icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/University_of_Michigan_logo.svg'
+  // },
+  // {
+  //   title: 'Python Data Structures',
+  //   issuer: 'Coursera',
+  //   date: 'June 2021',
+  //   image: <StorageIcon />,
+  //   icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
+  // },
+  // {
+  //   title: 'Programming for Everybody (Getting Started with Python)',
+  //   issuer: 'Coursera',
+  //   date: 'August 2020',
+  //   image: <WebIcon />,
+  //   icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
+  // },
+  // {
+  //   title: 'Programming for Everybody',
+  //   issuer: 'University of Michigan',
+  //   date: 'August 2020',
+  //   image: <WebIcon />,
+  //   icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/University_of_Michigan_logo.svg'
+  // },
+  // {
+  //   title: 'Introduction to Software Product Management',
+  //   issuer: 'Coursera',
+  //   date: 'June 2020',
+  //   image: <WebIcon />,
+  //   icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
+  // },
+  // {
+  //   title: 'Data Science Math Skills',
+  //   issuer: 'Coursera',
+  //   date: 'June 2020',
+  //   image: <StorageIcon />,
+  //   icon: 'https://cdn.worldvectorlogo.com/logos/coursera-3.svg'
+  // }
 ];
 
   
@@ -394,12 +413,18 @@ const EduCert = () => {
                     style={{ transition: 'padding 0.3s ease' }}
                   >
                     <div style={{ width: styles.iconSize, height: styles.iconSize }}>
-                    <img 
-                src={cert.icon} 
-                alt="." 
-                className="w-full object-cover"
-                style={{ height: styles.imageSize }}
-              />
+                      {typeof cert.icon === 'string' ? (
+                          <img 
+                            src={cert.icon} 
+                            alt="cert icon" 
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                          />
+                        ) : (
+                          <div style={{ width: '100%', height: '100%' }}>
+                            {cert.icon}
+                          </div>
+                        )}
+      
                     </div>
                   </div>
                   <div>
