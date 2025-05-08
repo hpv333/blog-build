@@ -1,21 +1,35 @@
 {
   "files": {
     "main.css": "/blog-build/static/css/main.2291d11d.css",
-    "main.js": "/blog-build/static/js/main.14411b6e.js",
-    "static/js/453.69f3745b.chunk.js": "/blog-build/static/js/453.69f3745b.chunk.js",
+    "main.js": "/blog-build/static/js/main.d35cc296.js",
+    "static/js/453.750b616b.chunk.js": "/blog-build/static/js/453.750b616b.chunk.js",
     "static/media/abc.png": "/blog-build/static/media/abc.45ea13280544b5652423.png",
     "static/media/hp_img.png": "/blog-build/static/media/hp_img.45ea13280544b5652423.png",
+    "static/media/introtofrontendev_hp.jpg": "/blog-build/static/media/introtofrontendev_hp.649028e38a31e279c791.jpg",
+    "static/media/Forage_HP_Job_Stimulation.jpg": "/blog-build/static/media/Forage_HP_Job_Stimulation.e47f14fd2d892796f154.jpg",
     "static/media/Donna_3.jpeg": "/blog-build/static/media/Donna_3.ff9cdda3271d40c30f3e.jpeg",
     "static/media/Donna_3_cut.jpeg": "/blog-build/static/media/Donna_3_cut.27b719112edf6957ebb1.jpeg",
     "static/media/IMG_2136.jpg": "/blog-build/static/media/IMG_2136.fcf3844c3cfa6f5c8a93.jpg",
+    "static/media/docker_hp.jpg": "/blog-build/static/media/docker_hp.685bfa077ed93280cec4.jpg",
+    "static/media/DemystifyingAI_hp.jpg": "/blog-build/static/media/DemystifyingAI_hp.e1d9a4966516dc555c60.jpg",
+    "static/media/cybersecurity_hp.jpg": "/blog-build/static/media/cybersecurity_hp.ea8dc354bed842642802.jpg",
+    "static/media/Springboot3_hp.jpg": "/blog-build/static/media/Springboot3_hp.141fa2cf7347904eb404.jpg",
+    "static/media/GithubEssentials_hp.jpg": "/blog-build/static/media/GithubEssentials_hp.e23c050933f3ff6f9f67.jpg",
+    "static/media/MySQL-hp.jpg": "/blog-build/static/media/MySQL-hp.c6917e45d99253761c8e.jpg",
+    "static/media/LearningDocker_hp.jpg": "/blog-build/static/media/LearningDocker_hp.1294c8c79219b91b6b07.jpg",
+    "static/media/microsoftazurefundamentals_hp.jpg": "/blog-build/static/media/microsoftazurefundamentals_hp.2ee5aec215701ced3826.jpg",
+    "static/media/unt-logo.png": "/blog-build/static/media/unt-logo.be6ba000bc54febff0d6.png",
+    "static/media/goldman-sachs.svg": "/blog-build/static/media/goldman-sachs.510868a340cb06f027f237d22140bb9c.svg",
     "static/media/logo.svg": "/blog-build/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/blog-build/index.html",
+    "static/media/meta-logo.svg": "/blog-build/static/media/meta-logo.6ad4528b5618ed68eb1b94d06b7b157d.svg",
+    "static/media/microsoft-logo.svg": "/blog-build/static/media/microsoft-logo.f6197f18a1a75a99331a142025cfaf73.svg",
     "main.2291d11d.css.map": "/blog-build/static/css/main.2291d11d.css.map",
-    "main.14411b6e.js.map": "/blog-build/static/js/main.14411b6e.js.map",
-    "453.69f3745b.chunk.js.map": "/blog-build/static/js/453.69f3745b.chunk.js.map"
+    "main.d35cc296.js.map": "/blog-build/static/js/main.d35cc296.js.map",
+    "453.750b616b.chunk.js.map": "/blog-build/static/js/453.750b616b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2291d11d.css",
-    "static/js/main.14411b6e.js"
+    "static/js/main.d35cc296.js"
   ]
 }
