@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/blog-build/static/css/main.bc6d8127.css",
-    "main.js": "/blog-build/static/js/main.e977fb73.js",
+    "main.css": "/blog-build/static/css/main.0b8c7783.css",
+    "main.js": "/blog-build/static/js/main.32a3df99.js",
     "static/js/453.69f3745b.chunk.js": "/blog-build/static/js/453.69f3745b.chunk.js",
     "static/media/introtofrontendev_hp.jpg": "/blog-build/static/media/introtofrontendev_hp.649028e38a31e279c791.jpg",
     "static/media/Forage_HP_Job_Stimulation.jpg": "/blog-build/static/media/Forage_HP_Job_Stimulation.e47f14fd2d892796f154.jpg",
@@ -17,12 +17,12 @@
     "index.html": "/blog-build/index.html",
     "static/media/meta-logo.svg": "/blog-build/static/media/meta-logo.721176e9842030f7c1c0c142f540310a.svg",
     "static/media/microsoft-logo.svg": "/blog-build/static/media/microsoft-logo.fd8be4036b93f03c70d80a7cd996aa49.svg",
-    "main.bc6d8127.css.map": "/blog-build/static/css/main.bc6d8127.css.map",
-    "main.e977fb73.js.map": "/blog-build/static/js/main.e977fb73.js.map",
+    "main.0b8c7783.css.map": "/blog-build/static/css/main.0b8c7783.css.map",
+    "main.32a3df99.js.map": "/blog-build/static/js/main.32a3df99.js.map",
     "453.69f3745b.chunk.js.map": "/blog-build/static/js/453.69f3745b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc6d8127.css",
-    "static/js/main.e977fb73.js"
+    "static/css/main.0b8c7783.css",
+    "static/js/main.32a3df99.js"
   ]
 }
