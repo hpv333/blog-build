@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/blog-build/static/css/main.0b8c7783.css",
-    "main.js": "/blog-build/static/js/main.32a3df99.js",
+    "main.js": "/blog-build/static/js/main.3b7cbeab.js",
     "static/js/453.69f3745b.chunk.js": "/blog-build/static/js/453.69f3745b.chunk.js",
     "static/media/introtofrontendev_hp.jpg": "/blog-build/static/media/introtofrontendev_hp.649028e38a31e279c791.jpg",
     "static/media/Forage_HP_Job_Stimulation.jpg": "/blog-build/static/media/Forage_HP_Job_Stimulation.e47f14fd2d892796f154.jpg",
@@ -12,17 +12,18 @@
     "static/media/GithubEssentials_hp.jpg": "/blog-build/static/media/GithubEssentials_hp.e23c050933f3ff6f9f67.jpg",
     "static/media/MySQL-hp.jpg": "/blog-build/static/media/MySQL-hp.c6917e45d99253761c8e.jpg",
     "static/media/LearningDocker_hp.jpg": "/blog-build/static/media/LearningDocker_hp.1294c8c79219b91b6b07.jpg",
+    "static/media/codeflux-icon.png": "/blog-build/static/media/codeflux-icon.0b09c130f1789d74282b.png",
     "static/media/unt-logo.png": "/blog-build/static/media/unt-logo.be6ba000bc54febff0d6.png",
     "static/media/goldman-sachs.svg": "/blog-build/static/media/goldman-sachs.510868a340cb06f027f237d22140bb9c.svg",
     "index.html": "/blog-build/index.html",
     "static/media/meta-logo.svg": "/blog-build/static/media/meta-logo.721176e9842030f7c1c0c142f540310a.svg",
     "static/media/microsoft-logo.svg": "/blog-build/static/media/microsoft-logo.fd8be4036b93f03c70d80a7cd996aa49.svg",
     "main.0b8c7783.css.map": "/blog-build/static/css/main.0b8c7783.css.map",
-    "main.32a3df99.js.map": "/blog-build/static/js/main.32a3df99.js.map",
+    "main.3b7cbeab.js.map": "/blog-build/static/js/main.3b7cbeab.js.map",
     "453.69f3745b.chunk.js.map": "/blog-build/static/js/453.69f3745b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0b8c7783.css",
-    "static/js/main.32a3df99.js"
+    "static/js/main.3b7cbeab.js"
   ]
 }
