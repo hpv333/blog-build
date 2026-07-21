@@ -1,0 +1,85 @@
+PROFESSIONAL SUMMARY
+High-velocity UX Engineer and Rapid Prototyper holding an MS in Computer Science (4.0 GPA) with a passion for transforming concepts into interactive frontend realities. Expert in leveraging modern AI development tools (Ollama, Claude Code, Cursor, Lovable, Gemini) to radically accelerate UI development, consistently building functional MVPs within 8 hours. Proven track record in React.js engineering, client-facing stakeholder management, and cross-functional software initiatives—delivering measurable efficiency and engagement boosts across higher-ed platforms and competitive hackathons.
+
+EDUCATION
+Master of Science (MS) in Computer Science | GPA: 4.0 / 4.0
+
+University of North Texas (UNT), Denton, TX | Aug 2023 – May 2025
+
+Bachelor of Technology (BTech) in Information Technology | Grade: 87.8%
+
+St. Martin's Engineering College, India | Aug 2019 – Jul 2023
+
+AI-ASSISTED MVP PROJECTS (VIBE CODED)
+Learning with Mulan | UX Engineer & Extension Developer | 2024 – Present
+
+Draggable AI Companion: Built a lightweight single-file web app and Chrome extension (~640 lines of HTML/JS) featuring an interactive, draggable character that simplifies complex text into plain English.
+
+Dual AI Architecture: Engineered seamless backend switching between a zero-cost local LLM instance via Ollama and cloud-based AI processing via the Claude API.
+
+Cross-Device Interactions: Architected native drag-and-drop mechanics supporting both desktop mouse events and mobile touch interactions with zero external dependencies.
+
+Stack: JavaScript (ES6+) | Chrome Extension API | Ollama | Claude API | HTML5/CSS3
+
+AquaRemind | UX Engineer & UI Prototyper | 2024 – Present
+
+High-Fidelity Prototyping: Rapidly scaffolded, designed, and shipped a wellness tracking Progressive Web App (PWA) under a tight timeline.
+
+Smart UI Systems: Engineered interactive components delivering time-sensitive reminder notifications for hydration and supplement routines.
+
+Stack: React.js | PWA | Cursor | Vercel | Live: aqua-hydrate.vercel.app
+
+AI Security Auditor | Interactive UI Prototyper | 2024 – Present
+
+API Integration: Built a clean React frontend connected to Google Gemini API to display automated security audits and vulnerability assessments.
+
+Constraint-Driven Design: Programmed proactive UI warnings, quota banners, and guardrails to elegantly handle free-tier API limitations visually.
+
+Stack: React.js | Gemini API | Supabase Integration | Vercel | Org: [github.com/codeflux-ai](https://github.com/codeflux-ai)
+
+WORK EXPERIENCE
+Web Developer & GA (Client & Technology Management)
+
+UNT College of Visual Arts & Design | Denton, TX | Sep 2023 – May 2025
+
+Universal Digital Signage Platform: Designed and deployed a scalable signage management application across CVAD facilities, boosting classroom and facility technology efficiency by 80%.
+
+Unified Scheduler Platform: Built a centralized asset reservation UI featuring Role-Based Access Control (RBAC) to handle high-volume equipment bookings seamlessly.
+
+Stakeholder Onboarding & Cross-Functional Leadership: Partnered with department leads and professors to manage feedback loops, document troubleshooting protocols, and deliver user-centered software solutions.
+
+Software Development & Design Intern
+
+StylePro Private Limited | Telangana, India | Feb 2023 – Jun 2023
+
+Engagement Lift: Integrated YouTube and Google APIs into the core e-commerce platform, boosting user engagement by 15% through interactive visual content.
+
+Dual Role (Dev & Design): Authored clean React.js UI components while designing digital marketing assets directly integrated into the store frontend.
+
+User-Centric Design: Collaborated with cross-functional teams to refine content strategy and responsive UI components for cross-device performance.
+
+Full Stack Development Intern
+
+Sindala Trading & Consulting Pvt. Ltd. | India | Jan 2022 – Sep 2022
+
+Latency Reduction: Developed responsive React.js and Django web interfaces, reducing latency by 40% for seamless cross-device rendering.
+
+Backend Optimization: Improved overall site speed and database performance by 25% through backend MySQL query optimization.
+
+Modular UI Architecture: Engineered reusable frontend component libraries that reduced future feature development time by 30%.
+
+HACKATHONS, COMPETITIONS & AWARDS
+3rd Place Winner — ITDS Business Analytics Hackathon (UNT & Peterbilt): Competed against 20+ teams and advanced to the top 6 finalist round. Analyzed complex enterprise datasets provided by Peterbilt Motors Company and presented data analytics insights to industry executives.
+
+VibeCon Bangalore Qualifier (Solo): Selected to advance to Round 2 of VibeCon Bangalore as a solo participant, demonstrating advanced speed, creativity, and AI-assisted prototyping abilities.
+
+IBM BOB Hackathon Participant: Competed in a high-intensity team hackathon; scripted, recorded, and produced comprehensive video feature walkthroughs and Loom demos to pitch the working software product.
+
+TECHNICAL SKILLS & COMPETENCIES
+Prototyping & Velocity: Vibe Coding, AI Workflows (Ollama, Claude Code, Cursor, Lovable, Claude, Gemini API), 8-Hour MVP Fabrication, Loom Video Product Pitching.
+
+Frontend Engineering: React.js, Progressive Web Apps (PWA), Chrome Extensions, HTML5, CSS3, JavaScript (ES6+), Touch/Mouse Event Handling.
+
+APIs & Data Analysis: REST APIs, Ollama (Local LLMs), Google Gemini API, Claude API, Data Analytics (Peterbilt Dataset Analysis), Supabase.
+
+Tools & Collaboration: Vercel, GitHub, Adobe/Graphic Design Tools, Client Onboarding, Cross-Functional Team Leadership.

@@ -1,18 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useRef } from 'react';
-
-// Custom styling to match the orange theme
-const styles = {
-  gradientBg: "bg-gradient-to-br from-amber-50 to-orange-200",
-  primaryColor: "text-orange-700", // --base-theme: #c26a23
-  primaryBg: "bg-orange-600", // --base-theme-dark: #e76f51
-  primaryLight: "bg-orange-50", // --base-theme-light: #fff4eb
-  primaryText: "text-orange-900", // --base-theme-font-color-dark: #6a2c1a
-  lightText: "text-amber-50", // --base-theme-font-color-light: #ffe8d6
-  accent: "text-orange-500",
-  hoverTransition: "transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-};
+import useScreenSize from '../hooks/useScreenSize';
 
 const projects = [
   {
@@ -20,25 +9,25 @@ const projects = [
     date: 'December 2024 — Present',
     image: null,
     chips: [
-      { label: 'MERN Stack', icon: 'globe' },
-      { label: 'MongoDB Atlas', icon: 'database' },
       { label: 'React.js', icon: 'code' },
+      { label: 'Full Stack', icon: 'globe' },
+      { label: 'RBAC', icon: 'user' },
     ],
     points: [
       {
-        title: 'Centralized Platform Development',
+        title: 'Centralized Frontend Platform',
         description:
-          'Designing and developing a MERN stack platform for equipment reservations and device checkouts, hoping to achieve 40% reduction in usage time'
+          'Designed and built a React.js asset reservation UI for equipment checkouts, targeting 40% reduction in booking time'
       },
       {
-        title: 'Advanced Access Control',
+        title: 'Role-Based Access Control',
         description:
-          'Implementing RBAC with MongoDB Atlas for roles like staff, manager, and various admins'
+          'Multi-role permission UI for staff, managers, and admins to handle high-volume equipment bookings seamlessly'
       },
       {
-        title: 'System Integration',
+        title: 'Stakeholder Integration',
         description:
-          'Collaborated with stakeholders to ensure scalability, integrating API testing with Postman'
+          'Collaborated with stakeholders to ensure scalability and seamless user experience across roles'
       }
     ]
   },
@@ -47,20 +36,20 @@ const projects = [
     date: 'September 2023 — November 2024',
     image: null,
     chips: [
-      { label: 'React.js', icon: 'globe' },
-      { label: 'Node.js', icon: 'database' },
-      { label: 'Raspberry Pi', icon: 'code' },
+      { label: 'React.js', icon: 'code' },
+      { label: 'JavaScript', icon: 'code' },
+      { label: 'Raspberry Pi', icon: 'globe' },
     ],
     points: [
       {
-        title: 'Frontend Optimization',
+        title: '70% Time Savings',
         description:
-          'Reduced manual playlist management time by 70% through an efficient MERN dashboard at UNT Art Building'
+          'Reduced manual playlist management time by 70% through an efficient React.js dashboard at UNT Art Building'
       },
       {
-        title: 'Backend Development',
+        title: 'Content Management UI',
         description:
-          'Implemented Node.js backend with robust API and file system support'
+          'Built intuitive scheduling interface for digital displays across CVAD facilities with live content updates'
       },
       {
         title: 'Hardware Integration',
@@ -128,10 +117,10 @@ const projects = [
     links: {
       github:'https://github.com/hpv333/WalmartTimeSeries_Sales_Prediction'
     }
-    
+
   },
   {
-    title: 'Business Analytics Hackathon - 3rd Prize',
+    title: 'Business Analytics Hackathon — 3rd Prize',
     date: 'March 2024',
     image: null,
     chips: [
@@ -141,19 +130,19 @@ const projects = [
     ],
     points: [
       {
-        title: 'Predictive Analytics Solution',
+        title: '3rd Place — Top 6 Finalist',
         description:
-          'Developed a data analytics solution for Peterbilt Motors Company to identify root causes of warranty costs, securing 3rd Prize at ITDS Business Analytics Hackathon'
+          'Competed against 20+ teams and advanced to the top 6 finalist round. Analyzed complex enterprise datasets provided by Peterbilt Motors Company and presented insights to industry executives.'
       },
       {
-        title: 'Advanced Statistical Analysis',
+        title: 'Predictive Analytics',
         description:
-          'Implemented Kruskal-Wallis H-Test for attribute significance analysis and Random Forest Regression for cost prediction, achieving 29.7% test accuracy'
+          'Implemented Kruskal-Wallis H-Test for attribute significance analysis and Random Forest Regression for warranty cost prediction'
       },
       {
-        title: 'Team Collaboration',
+        title: 'Executive Presentation',
         description:
-          'Collaborated with a team of four members through competitive rounds, presenting findings to industry experts in the final round of the hackathon'
+          'Presented data analytics findings to Peterbilt industry executives in the final round as part of a four-person team'
       }
     ],
     links: {
@@ -161,29 +150,83 @@ const projects = [
     }
   },
   {
+    title: 'VibeCon Bangalore — Solo Qualifier',
+    date: 'June 2025',
+    image: null,
+    chips: [
+      { label: 'AI Prototyping', icon: 'brain' },
+      { label: 'Solo Build', icon: 'user' },
+      { label: 'Vibe Coding', icon: 'code' },
+    ],
+    points: [
+      {
+        title: 'Round 2 Selection',
+        description:
+          'Selected to advance to Round 2 of VibeCon Bangalore as a solo participant, demonstrating advanced AI-assisted prototyping abilities.'
+      },
+      {
+        title: 'Speed & Creativity',
+        description:
+          'Demonstrated rapid UI prototyping, creative problem-solving, and production-ready shipping under competition constraints.'
+      },
+      {
+        title: 'Solo Vibe Coder',
+        description:
+          'Competed independently using AI-powered development tools to build and ship a functional MVP faster than teams.'
+      }
+    ]
+  },
+  {
+    title: 'IBM BOB Hackathon',
+    date: '2024',
+    image: null,
+    chips: [
+      { label: 'Team Hackathon', icon: 'users' },
+      { label: 'Product Demo', icon: 'code' },
+      { label: 'Loom Video', icon: 'globe' },
+    ],
+    points: [
+      {
+        title: 'Full Product Pitch',
+        description:
+          'Competed in a high-intensity team hackathon; scripted, recorded, and produced comprehensive video feature walkthroughs and Loom demos to pitch the working software product.'
+      },
+      {
+        title: 'Video Production Lead',
+        description:
+          'Led the product demo workflow — from writing feature scripts to recording polished Loom walkthroughs for judge presentation.'
+      },
+      {
+        title: 'Cross-Team Collaboration',
+        description:
+          'Coordinated with team members to align on product narrative, feature showcase, and pitch delivery.'
+      }
+    ]
+  },
+  {
     title: 'Online Food Delivery Management System',
     date: 'June 2023 — September 2023',
     image: null,
     chips: [
-      { label: 'Python', icon: 'code' },
-      { label: 'Django', icon: 'database' },
+      { label: 'JavaScript', icon: 'code' },
+      { label: 'REST APIs', icon: 'globe' },
       { label: 'HTML/CSS', icon: 'globe' },
     ],
     points: [
       {
-        title: 'Full-Stack Development',
+        title: 'Frontend Development',
         description:
-          'Built a complete web-based infrastructure for online food ordering, delivery management, and restaurant browsing with secure payment processing'
+          'Built a responsive web storefront for restaurant browsing, menu display, and order placement with intuitive UI flows'
       },
       {
-        title: 'Database Architecture',
+        title: 'User Interface Design',
         description:
-          'Designed and implemented MySQL database using phpMyAdmin to store restaurant information, user accounts, orders, and payment data'
+          'Designed user-friendly order tracking, cart management, and payment screens optimized for cross-device performance'
       },
       {
-        title: 'Technical Implementation',
+        title: 'API Integration',
         description:
-          'Deployed using Django framework with a virtual environment setup, migration management, and comprehensive documentation for installation'
+          'Connected frontend to RESTful backend APIs for seamless order management and payment processing'
       }
     ],
     links: {
@@ -243,35 +286,35 @@ const projects = [
           'Designed responsive interfaces with intuitive navigation and visualization of attendance data'
       }
     ],
-   
+
   },
   {
     title: 'Acerz E-commerce Platform',
     date: 'October 2023 — February 2024',
     image: null,
     chips: [
-      { label: 'React.js', icon: 'globe' },
-      { label: 'Django', icon: 'database' },
+      { label: 'React.js', icon: 'code' },
+      { label: 'REST APIs', icon: 'globe' },
       { label: 'E-commerce', icon: 'shop' },
     ],
     points: [
       {
-        title: 'Full-Stack Development',
+        title: 'ReactJS Frontend Development',
         description:
-          'Built a complete e-commerce platform for selling land properties with ReactJS frontend and Django backend'
+          'Built a complete React.js e-commerce platform for land property listings with intuitive property browsing UX'
       },
       {
-        title: 'Frontend Implementation',
+        title: 'Responsive UI Components',
         description:
-          'Developed responsive UI components and implemented user authentication and property listing features'
+          'Developed responsive UI components including user authentication, property listings, and dynamic search filters'
       },
       {
         title: 'API Integration',
         description:
-          'Created RESTful APIs for property data management and integrated payment processing functionalities'
+          'Integrated RESTful APIs for property data management and payment processing functionalities'
       }
     ],
-  
+
   },
   {
     title: 'Exercise Recommendation System',
@@ -394,42 +437,11 @@ const Icons = {
 
 const Projects = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
-  const [screenSize, setScreenSize] = useState('desktop');
+  const { screenSize, isMobile } = useScreenSize();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Function to detect screen size
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        setScreenSize('mobile');
-      } else if (width < 768) {
-        setScreenSize('small-tablet');
-      } else if (width < 1024) {
-        setScreenSize('tablet');
-      } else if (width < 1280) {
-        setScreenSize('desktop');
-      } else if (width < 1536) {
-        setScreenSize('large-desktop');
-      } else {
-        setScreenSize('ultrawide');
-      }
-    };
-    
-    // Set initial screen size
-    handleResize();
-    
-    // Add event listener with debounce for performance
-    let timeoutId;
-    const debouncedResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(handleResize, 100);
-    };
-    
-    window.addEventListener('resize', debouncedResize);
-    
-    // Setup intersection observer for animations
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -444,11 +456,8 @@ const Projects = () => {
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-    
-    // Clean up
+
     return () => {
-      window.removeEventListener('resize', debouncedResize);
-      clearTimeout(timeoutId);
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
@@ -465,67 +474,77 @@ const Projects = () => {
   // Function to render card header
   const renderCardHeader = (proj, idx) => {
     return (
-      <div className={`p-4 sm:p-5 lg:p-6 ${styles.primaryLight}`}>
-        <h3 className={`text-xl sm:text-2xl md:text-2xl font-bold ${styles.primaryColor} mb-2 text-left`}>
+      <div className="p-3 sm:p-5 lg:p-6 bg-base-theme-light">
+        <h3 className="text-base sm:text-2xl md:text-2xl font-bold text-primary-color mb-1 sm:mb-2 text-left">
           {proj.title}
         </h3>
-        
-        <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-2.5 mb-2 justify-start">
+
+        <div className="flex flex-wrap gap-1 sm:gap-2 md:gap-2.5 mb-2 justify-start">
           {proj.chips.map((chip, i) => (
-            <span 
+            <span
               key={i}
-              className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${styles.primaryColor} bg-orange-200`}
+              className="inline-flex items-center px-1.5 sm:px-2 py-0.5 rounded-full text-xs font-medium text-chip-text bg-chip-bg"
             >
-              <span className="mr-1">
-                {Icons[chip.icon]()}
-              </span>
+              {!isMobile && (
+                <span className="mr-1">
+                  {Icons[chip.icon]()}
+                </span>
+              )}
               {chip.label}
             </span>
           ))}
         </div>
-        
+
         <div className="flex items-center justify-between">
-          <div className={`${styles.primaryBg} ${styles.lightText} px-3 py-1 rounded-full text-xs font-medium shadow-md inline-block`}>
+          <div className="bg-base-theme text-font-color-light px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium shadow-md inline-block">
             {proj.date}
           </div>
-          
-          {proj.links && proj.links.github && (
-            <a 
+
+          {proj.links && proj.links.github ? (
+            <a
               href={proj.links.github}
-              target="_blank" 
+              target="_blank"
               rel="noopener noreferrer"
-              className={`p-2 ${styles.primaryBg} ${styles.lightText} rounded-full hover:bg-orange-500 transition-colors inline-flex`}
+              className="p-2 bg-base-theme text-font-color-light rounded-full hover:bg-base-theme-dark transition-colors inline-flex"
               aria-label="GitHub Repository"
             >
               {Icons.github()}
             </a>
+          ) : (
+            <div className="opacity-50 flex items-center gap-1.5">
+              <span className="p-2 bg-base-theme-light text-primary-color rounded-full cursor-not-allowed">
+                {Icons.github()}
+              </span>
+              <span className="text-xs text-text-muted italic font-medium">Private</span>
+            </div>
           )}
         </div>
       </div>
     );
   };
- 
+
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      className={`py-12 sm:py-16 md:py-20 lg:py-24 ${styles.gradientBg}`}
+      className="py-12 sm:py-16 md:py-20 lg:py-24 text-left bg-gradient-to-br from-section-gradient-from to-section-gradient-to"
     >
-      <div className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+      <div className="max-w-full sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
         {/* Section Header with animated transition */}
-        <div className={`transform transition-all duration-700 text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <h2 
-            className="font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif] mb-3 sm:mb-4 md:mb-5"
+        <div className={`transform transition-all duration-700 mb-8 sm:mb-10 md:mb-12 lg:mb-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          <h2
+            className="font-bold text-font-color-dark font-['Georgia',_serif] relative inline-block"
             style={{
-              fontSize: screenSize === 'mobile' ? '2rem' : screenSize === 'small-tablet' ? '2.5rem' : '3rem',
+              fontSize: screenSize === 'mobile' ? '1.75rem' : screenSize === 'small-tablet' ? '2.25rem' : '3rem',
               transition: 'font-size 0.3s ease'
             }}
           >
             Featured Projects
+            <span className={`block h-1 bg-base-theme mt-3 transition-all duration-1000 ease-out ${isVisible ? 'w-16 sm:w-20 md:w-24' : 'w-0'}`}></span>
           </h2>
-          
-          <p 
-            className={`${styles.accent} mx-auto max-w-lg md:max-w-xl lg:max-w-2xl mb-8 sm:mb-10 md:mb-12`}
+
+          <p
+            className="text-accent-color max-w-lg md:max-w-xl lg:max-w-2xl mt-3 sm:mt-4 mb-8 sm:mb-10 md:mb-12 italic"
             style={{
               fontSize: screenSize === 'mobile' ? '1rem' : '1.125rem',
               transition: 'font-size 0.3s ease'
@@ -536,42 +555,44 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div 
+        <div
           className="grid gap-6 sm:gap-8 md:gap-10"
-          style={{ 
+          style={{
             gridTemplateColumns: `repeat(${getGridColumns()}, minmax(0, 1fr))`,
-            transition: 'all 0.3s ease-in-out' 
+            transition: 'all 0.3s ease-in-out'
           }}
         >
           {projects.map((proj, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className={`transform transition-all duration-700 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
               style={{ transitionDelay: `${idx * 150}ms` }}
               onMouseEnter={() => setHoveredCard(idx)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              <div 
-                className={`bg-white rounded-xl shadow-lg overflow-hidden ${styles.hoverTransition}`}
+              <div
+                className="bg-bg-surface rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
                 {/* Render header based on whether image is available */}
                 {renderCardHeader(proj, idx)}
 
                 {/* Content Section */}
-                <div className="p-4 sm:p-5 md:p-6">
-                  <ul className="space-y-3 sm:space-y-4">
+                <div className="p-3 sm:p-5 md:p-6">
+                  <ul className="space-y-1.5 sm:space-y-4">
                     {proj.points.map((pt, i) => (
                       <li key={i} className="flex group text-left">
-                        <span className={`mt-1 mr-3 text-green-500 flex-shrink-0 ${hoveredCard === idx ? 'scale-110' : ''} transition-transform duration-300`}>
+                        <span className={`mt-1 mr-2 sm:mr-3 text-success-color flex-shrink-0 ${hoveredCard === idx ? 'scale-110' : ''} transition-transform duration-300`}>
                           {Icons.check()}
                         </span>
                         <div>
-                          <h4 className={`font-bold ${styles.primaryColor} group-hover:text-orange-800 transition-colors text-base sm:text-lg`}>
+                          <h4 className="font-bold text-primary-color group-hover:text-base-theme-dark transition-colors text-sm sm:text-lg">
                             {pt.title}
                           </h4>
-                          <p className="text-gray-700 text-xs sm:text-sm">
-                            {pt.description}
-                          </p>
+                          {!isMobile && (
+                            <p className="text-text-secondary text-xs sm:text-sm">
+                              {pt.description}
+                            </p>
+                          )}
                         </div>
                       </li>
                     ))}

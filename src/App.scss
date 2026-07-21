@@ -16,6 +16,10 @@ $base-theme-dollar: #f4a261; // Updated to an orange-based color
   --bg-gradient-light: #ffe8d6;             // Matches text-amber-50
   --bg-gradient-dark: #f9bb8b;              // Matches to-orange-200
 
+  // Section gradient (from-amber-50 to-orange-200 equiv)
+  --section-gradient-from: #fffbeb;
+  --section-gradient-to: #fed7aa;
+
   // Font Colors
   --base-theme-font-color-dark: #6a2c1a;    // Dark font color
   --base-theme-font-color-light: #ffe8d6;   // Light font color
@@ -27,14 +31,45 @@ $base-theme-dollar: #f4a261; // Updated to an orange-based color
   --heading-font-family: "Georgia, serif";
   --body-font-family:"Merriweather", serif;
 
+  // Chip / Pill colors
+  --chip-bg: #fed7aa;                       // orange-200 equiv
+  --chip-bg-light: #ffedd5;                 // orange-100 equiv
+  --chip-text: #c2410c;                     // orange-700 equiv
+
+  // Card surfaces
+  --card-header-bg: #fff7ed;               // orange-50 equiv
+  --card-header-border: #ffedd5;           // orange-100 equiv
+  --bg-surface: #ffffff;
+
+  // Badge colors (date pills, role badges)
+  --badge-bg: #ffedd5;                     // orange-100 equiv
+  --badge-text: #c2410c;                   // orange-700 equiv
+  --badge-current-bg: #dcfce7;             // green-100 equiv
+  --badge-current-text: #15803d;           // green-700 equiv
+  --badge-break-bg: #f3f4f6;              // gray-100 equiv
+  --badge-break-text: #4b5563;            // gray-600 equiv
+
+  // Accent borders
+  --border-current: #22c55e;              // green-500
+  --border-break: #9ca3af;                // gray-400
+  --border-default: var(--base-theme);
+
+  // Success / check marks
+  --success-color: #22c55e;               // green-500
+  --success-bg: #16a34a;                  // green-600
+
+  // Secondary text
+  --text-secondary: #4b5563;              // gray-600
+  --text-muted: #6b7280;                  // gray-500
+
   // Effects
   --hover-transition: all 0.3s ease;
   --hover-transform: translateY(-0.5rem);
   --hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-;.App {
-  text-align: center;
+.App {
+  text-align: left;
 }
 
 .App-logo {
@@ -42,12 +77,11 @@ $base-theme-dollar: #f4a261; // Updated to an orange-based color
   pointer-events: none;
 }
 .content-wrapper {
-  margin-top: 100px;
+  margin-top: 64px;
   height: 100vh;
   overflow: hidden;
- // or padding-top: 80px;
   @media (max-width: 768px) {
-    margin-top: 124px;
+    margin-top: 72px;
   }
 }
 
@@ -100,8 +134,18 @@ $base-theme-dollar: #f4a261; // Updated to an orange-based color
   flex: 0 0 100vw;
   height: 100vh;
   scroll-snap-align: start;
-  padding: 2rem;
+  padding: 1rem 0.5rem;
   box-sizing: border-box;
-  overflow-y: auto; // In case your content is taller than 100vh
+  overflow-y: auto;
   background: linear-gradient(to left, var(--base-theme-light), var(--bg-gradient-dark));
+
+  @media (min-width: 640px) {
+    padding: 1rem 1rem;
+  }
+  @media (min-width: 768px) {
+    padding: 1rem 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    padding: 1rem 2rem;
+  }
 }

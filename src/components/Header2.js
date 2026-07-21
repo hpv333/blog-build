@@ -4,7 +4,7 @@ const Header2 = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const pages = ['Blog', 'Projects', 'Work Experience', 'Skills', 'Education'];
+  const pages = ['Blog', 'Projects', 'Vibe Projects', 'Work Experience', 'Skills', 'Education'];
   const settings = ['Profile'];
 
   const handleOpenNavMenu = (event) => {
@@ -44,12 +44,12 @@ const Header2 = () => {
     <div className="fixed top-0 left-0 right-0 z-50 flex bg-transparent">
       {/* AppBar with original color scheme (using var(--base-theme)) */}
       <div className="w-full flex flex-col" style={{ backgroundColor: 'var(--base-theme)' }}>
-        <div className="flex items-center justify-between px-4 md:px-8 py-2">
+        <div className="flex items-center justify-between px-4 md:px-6 py-1">
           {/* Logo and Title - Always visible */}
           <div className="flex items-center">
             {/* New Logo SVG - Desktop */}
-            <svg 
-              className="hidden md:block h-8 w-8 mr-2 text-white" 
+            <svg
+              className="hidden md:block h-5 w-5 mr-2 text-white"
               xmlns="http://www.w3.org/2000/svg" 
               viewBox="0 0 24 24" 
               fill="none" 
@@ -62,13 +62,13 @@ const Header2 = () => {
             </svg>
             
             {/* Typography for Desktop */}
-            <h1 className="hidden md:block font-mono font-bold tracking-widest text-white text-xl">
+            <h1 className="hidden md:block font-mono font-bold tracking-wide text-white text-sm">
               Hari Priya Vedala
             </h1>
-            
+
             {/* New Logo SVG - Mobile */}
-            <svg 
-              className="block md:hidden h-8 w-8 mr-2 text-white" 
+            <svg
+              className="block md:hidden h-5 w-5 mr-2 text-white"
               xmlns="http://www.w3.org/2000/svg" 
               viewBox="0 0 24 24" 
               fill="none" 
@@ -81,7 +81,7 @@ const Header2 = () => {
             </svg>
             
             {/* Mobile Title */}
-            <h1 className="block md:hidden font-mono font-bold tracking-wider text-white text-lg truncate max-w-xs">
+            <h1 className="block md:hidden font-mono font-bold tracking-wide text-white text-sm truncate max-w-xs">
               Hari Priya Vedala
             </h1>
           </div>
@@ -99,13 +99,13 @@ const Header2 = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center justify-center flex-1 mx-10">
-            <div className="flex justify-around space-x-4 w-full max-w-2xl">
+          <div className="hidden md:flex items-center ml-6">
+            <div className="flex gap-1">
               {pages.map((page) => (
                 <button
                   key={page}
                   onClick={() => handleCloseNavMenu(page)}
-                  className="my-2 text-white px-4 py-2 hover:bg-white hover:bg-opacity-10 rounded transition"
+                  className="text-white px-3 py-1 text-sm hover:bg-white hover:bg-opacity-10 rounded transition whitespace-nowrap"
                 >
                   {page}
                 </button>

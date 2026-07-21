@@ -4,6 +4,38 @@ import useScreenSize from '../hooks/useScreenSize';
 
 const vibeProjects = [
   {
+    title: 'AI Security Auditor',
+    date: '2024 — Present',
+    image: null,
+    chips: [
+      { label: 'React.js', icon: 'code' },
+      { label: 'Gemini API', icon: 'brain' },
+      { label: 'Supabase', icon: 'database' },
+      { label: 'Vercel', icon: 'globe' },
+    ],
+    points: [
+      {
+        title: 'AI-Powered Security Analysis',
+        description:
+          'A web app that leverages Google Gemini\'s API to perform intelligent security audits and vulnerability assessments.'
+      },
+      {
+        title: 'Zero-Cost Architecture',
+        description:
+          'Built entirely on free-tier tools — Gemini API, Supabase, GitHub, and Vercel — with quota guardrails and UI warnings built in.'
+      },
+      {
+        title: 'Vibe Coded & Deployed',
+        description:
+          'Scaffolded in Lovable and refined with Cursor. GitHub org: github.com/codeflux-ai'
+      }
+    ],
+    links: {
+      github: 'https://github.com/codeflux-ai#3-ai-security-auditor',
+      website: 'https://ai-security-auditor.lovable.app/'
+    }
+  },
+  {
     title: 'AquaRemind',
     date: '2024 — Present',
     image: null,
@@ -36,35 +68,35 @@ const vibeProjects = [
     }
   },
   {
-    title: 'AI Security Auditor',
-    date: '2024 — Present',
+    title: 'Learning with Mulan',
+    date: '2024 — Ongoing',
     image: null,
     chips: [
-      { label: 'React.js', icon: 'code' },
-      { label: 'Gemini API', icon: 'brain' },
-      { label: 'Supabase', icon: 'database' },
-      { label: 'Vercel', icon: 'globe' },
+      { label: 'JavaScript (ES6+)', icon: 'code' },
+      { label: 'Chrome Extension', icon: 'globe' },
+      { label: 'Ollama', icon: 'brain' },
+      { label: 'Claude API', icon: 'brain' },
+      { label: 'Ongoing', icon: 'check' },
     ],
     points: [
       {
-        title: 'AI-Powered Security Analysis',
+        title: 'Draggable AI Companion',
         description:
-          'A web app that leverages Google Gemini\'s API to perform intelligent security audits and vulnerability assessments.'
+          'A lightweight single-file web app and Chrome extension (~640 lines of HTML/JS) featuring an interactive, draggable character that simplifies complex text into plain English.'
       },
       {
-        title: 'Zero-Cost Architecture',
+        title: 'Dual AI Architecture',
         description:
-          'Built entirely on free-tier tools — Gemini API, Supabase, GitHub, and Vercel — with quota guardrails and UI warnings built in.'
+          'Engineered seamless switching between a zero-cost local LLM via Ollama and cloud-based AI processing via the Claude API.'
       },
       {
-        title: 'Vibe Coded & Deployed',
+        title: 'Cross-Device Interactions',
         description:
-          'Scaffolded in Lovable and refined with Cursor. GitHub org: github.com/codeflux-ai'
+          'Native drag-and-drop mechanics supporting both desktop mouse events and mobile touch interactions with zero external dependencies.'
       }
     ],
     links: {
-      github: 'https://github.com/codeflux-ai#3-ai-security-auditor',
-      website: 'https://ai-security-auditor.lovable.app/'
+      github: 'https://github.com/codeflux-ai'
     }
   }
 ];

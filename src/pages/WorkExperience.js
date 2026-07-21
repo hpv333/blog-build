@@ -1,314 +1,331 @@
 import React, { useState, useEffect, useRef } from "react";
-import './Skills.css';
-
-// Import your images directly
-import abc from "../images/abc.png";
-import Donna_3_cut from "../images/Donna_3_cut.jpeg";
+import useScreenSize from '../hooks/useScreenSize';
 
 const timelineData = [
   {
-    date: "Jan 2022 - June 2022",
-    title: "Full Stack Intern",
-    company: "Sindala Trading and Pvt Ltd",
+    date: "Dec 2025 — Present",
+    title: "Freelance Full Stack Developer",
+    company: "Independent · India",
+    description: "Building web applications and portfolio sites for clients using AI-assisted vibe coding methodology.",
+    type: "current",
+    chips: [
+      { label: "React.js", icon: "code" },
+      { label: "AI Tools", icon: "brain" },
+      { label: "Vercel", icon: "globe" },
+    ],
+    points: [
+      { title: "Client Projects", description: "Delivering responsive web apps and portfolio sites for freelance clients across industries" },
+      { title: "Vibe Coding Methodology", description: "Leveraging AI-assisted development workflows for rapid prototyping and production-ready builds" },
+    ],
   },
   {
-    date: "Mar 2023 — May 2023",
-    title: "Software Development Intern",
-    company: "Style Pro Pvt Ltd",
+    date: "Aug 2025 — Nov 2025",
+    title: "Career Break · Upskilling & Design",
+    company: "Self-directed Learning",
+    description: "Intensive skill refresh — AI tools, Docker, Spring Boot, Cybersecurity, modern dev workflows, and freelance logo design.",
+    type: "break",
+    chips: [
+      { label: "Docker", icon: "globe" },
+      { label: "Spring Boot", icon: "code" },
+      { label: "Cybersecurity", icon: "brain" },
+      { label: "Logo Design", icon: "brain" },
+    ],
+    points: [
+      { title: "Professional Certifications", description: "Earned Docker Foundations, Cybersecurity, Goldman Sachs Forage, and Meta Front-End certificates" },
+      { title: "Modern Workflows", description: "Deep-dived into containerization, CI/CD pipelines, and AI-powered development tools" },
+      { title: "Logo Design Portfolio", description: "Created brand identities and logo concepts for clients across logistics, construction, and education sectors using Canva" },
+    ],
   },
   {
-    date: "Sep 2023 — Present",
-    title: "Graduate Assistant IT (Web developer)",
-    company: "CVAD University Of North Texas",
+    date: "Sep 2023 — May 2025",
+    title: "Graduate Assistant IT (Web Developer)",
+    company: "CVAD, University of North Texas",
+    description: "Designed and deployed scalable web platforms across CVAD facilities, boosting classroom and facility technology efficiency by 80%.",
+    chips: [
+      { label: "React.js", icon: "code" },
+      { label: "Client Relations", icon: "globe" },
+      { label: "Raspberry Pi", icon: "code" },
+    ],
+    points: [
+      { title: "80% Efficiency Boost", description: "Designed and deployed a scalable digital signage management application across CVAD facilities, boosting classroom and facility technology efficiency by 80%." },
+      { title: "Unified Scheduler UI", description: "Built a centralized React.js asset reservation UI featuring Role-Based Access Control (RBAC) to handle high-volume equipment bookings seamlessly." },
+      { title: "Stakeholder Leadership", description: "Partnered with department leads and professors to manage feedback loops, document troubleshooting protocols, and deliver user-centered software solutions." },
+    ],
+  },
+  {
+    date: "Feb 2023 — Jun 2023",
+    title: "Software Development & Design Intern",
+    company: "StylePro Private Limited · Telangana, India",
+    description: "Integrated YouTube and Google APIs into the e-commerce platform, boosting user engagement by 15% through interactive visual content.",
+    chips: [
+      { label: "React.js", icon: "code" },
+      { label: "YouTube API", icon: "globe" },
+      { label: "UI Design", icon: "code" },
+    ],
+    points: [
+      { title: "15% Engagement Lift", description: "Integrated YouTube and Google APIs into the core e-commerce platform, boosting user engagement by 15% through interactive visual content." },
+      { title: "Dual Role: Dev & Design", description: "Authored clean React.js UI components while designing digital marketing assets directly integrated into the store frontend." },
+      { title: "User-Centric Design", description: "Collaborated with cross-functional teams to refine content strategy and responsive UI components for cross-device performance." },
+    ],
+  },
+  {
+    date: "Jan 2022 — Sep 2022",
+    title: "Full Stack Development Intern",
+    company: "Sindala Trading & Consulting Pvt. Ltd. · India",
+    description: "Built responsive React.js frontends delivering 40% latency reduction; engineered reusable component libraries cutting future dev time by 30%.",
+    chips: [
+      { label: "React.js", icon: "code" },
+      { label: "JavaScript", icon: "code" },
+    ],
+    points: [
+      { title: "40% Latency Reduction", description: "Developed responsive React.js web interfaces, reducing latency by 40% for seamless cross-device rendering." },
+      { title: "Modular Component Library", description: "Engineered reusable frontend component libraries that reduced future feature development time by 30%." },
+    ],
   },
 ];
 
-const itemData = [
-  {
-    img: abc,
-    title: "text-behind-image",
-    author: "Rexon Wong's",
-    link: "https://textbehindimage.rexanwong.xyz/",
-  },
-  {
-    img: Donna_3_cut,
-    title: "Donna AI",
-    author: "Mobiversite",
-    link: "https://www.musicdonna.com/",
-  },
-];
+// Icons
+const Icons = {
+  globe: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="2" y1="12" x2="22" y2="12"></line>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+    </svg>
+  ),
+  code: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6"></polyline>
+      <polyline points="8 6 2 12 8 18"></polyline>
+    </svg>
+  ),
+  brain: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44A2.5 2.5 0 0 1 2 17.5v-11a2.5 2.5 0 0 1 2.5-2.5h1.44a2.5 2.5 0 0 0 2.15-1.23L8.9 1.4a2.5 2.5 0 0 1 .6-.4z"></path>
+      <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44A2.5 2.5 0 0 0 22 17.5v-11a2.5 2.5 0 0 0-2.5-2.5h-1.44a2.5 2.5 0 0 1-2.15-1.23L15.1 1.4a2.5 2.5 0 0 0-.6-.4z"></path>
+    </svg>
+  ),
+  check: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+  ),
+};
+
+// Icons for different role types
+const RoleIcon = ({ type, size }) => {
+  if (type === 'current') {
+    return (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+    );
+  }
+  if (type === 'break') {
+    return (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+      </svg>
+    );
+  }
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+  );
+};
+
+const getBorderClass = (type) => {
+  if (type === 'current') return 'border-border-current';
+  if (type === 'break') return 'border-border-break';
+  return 'border-base-theme';
+};
+
+const getDotBg = (type) => {
+  if (type === 'current') return 'bg-success-bg';
+  if (type === 'break') return 'bg-border-break';
+  return 'bg-base-theme';
+};
+
+const getBadgeClasses = (type) => {
+  if (type === 'current') return 'bg-badge-current-bg text-badge-current-text';
+  if (type === 'break') return 'bg-badge-break-bg text-badge-break-text';
+  return 'bg-badge-bg text-badge-text';
+};
 
 const WorkExperience = () => {
   const [visibleItems, setVisibleItems] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
-  const [screenSize, setScreenSize] = useState('desktop');
+  const { screenSize, isMobile } = useScreenSize();
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Function to detect element visibility
-    const observeVisibility = () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const [entry] = entries;
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            // Staggered animation effect for timeline items
-            timelineData.forEach((_, index) => {
-              setTimeout(() => {
-                setVisibleItems((prev) => [...prev, index]);
-              }, 300 + index * 300);
-            });
-            observer.unobserve(entry.target);
-          }
-        },
-        { threshold: 0.1 }
-      );
+    const currentRef = sectionRef.current;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          timelineData.forEach((_, index) => {
+            setTimeout(() => {
+              setVisibleItems((prev) => [...prev, index]);
+            }, 300 + index * 250);
+          });
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-      if (sectionRef.current) {
-        observer.observe(sectionRef.current);
-      }
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
 
-      return observer;
-    };
-
-    // Function to handle screen size detection
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        setScreenSize('mobile');
-      } else if (width < 1024) {
-        setScreenSize('tablet');
-      } else if (width < 1536) {
-        setScreenSize('desktop');
-      } else {
-        setScreenSize('large');
-      }
-    };
-
-    const observer = observeVisibility();
-    handleResize(); // Set initial size
-
-    // Add event listener
-    window.addEventListener('resize', handleResize);
-
-    // Clean up
     return () => {
-      window.removeEventListener('resize', handleResize);
-      if (observer && sectionRef.current) {
+      if (currentRef) {
         observer.disconnect();
       }
     };
   }, []);
 
-  // Helper for dynamic spacing
-  const getSpacing = (size) => {
-    switch (screenSize) {
-      case 'mobile': return size.sm;
-      case 'tablet': return size.md;
-      case 'desktop': return size.lg;
-      case 'large': return size.xl;
-      default: return size.md;
-    }
-  };
-
-  // Dynamic styles based on screen size
-  const dynamicStyles = {
-    padding: getSpacing({ sm: 16, md: 24, lg: 32, xl: 40 }),
-    fontSize: {
-      heading: getSpacing({ sm: 32, md: 36, lg: 40, xl: 48 }),
-      subheading: getSpacing({ sm: 20, md: 22, lg: 24, xl: 28 }),
-    },
-    imageHeight: getSpacing({ sm: 160, md: 200, lg: 180, xl: 220 }),
+  const getHeadingSize = () => {
+    if (screenSize === 'mobile') return '1.75rem';
+    if (screenSize === 'small-tablet') return '2.25rem';
+    if (screenSize === 'tablet') return '2.5rem';
+    return '3rem';
   };
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      className="w-full py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-10 lg:px-16 overflow-hidden"
-      style={{ 
-        background: 'var(--base-theme-light, #fff4eb)',
-        transition: 'all 0.3s ease-in-out'
-      }}
+      className="w-full py-12 sm:py-16 md:py-20 lg:py-24 text-left bg-gradient-to-br from-section-gradient-from to-section-gradient-to"
     >
-      {/* Section Heading with animated underline */}
-      <div className={`transform transition-all duration-700 text-center mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-        <h2 
-          className="font-['Georgia',_serif] font-bold relative inline-block"
-          style={{ 
-            fontSize: `${dynamicStyles.fontSize.heading / 16}rem`,
-            color: 'var(--base-theme-font-color-dark, #6a2c1a)',
-            transition: 'font-size 0.3s ease-in-out'
-          }}
-        >
-          Professional Experience
-          <span 
-            className={`block h-1 bg-[var(--base-theme)] mt-2 transition-all duration-1000 ease-out mx-auto`}
-            style={{ width: isVisible ? `${dynamicStyles.fontSize.heading / 1.5}px` : '0px' }}
-          ></span>
-        </h2>
-      </div>
+      <div className="max-w-full sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
+        {/* Section Heading */}
+        <div className={`transform transition-all duration-700 mb-8 sm:mb-10 md:mb-12 lg:mb-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          <h2
+            className="font-bold text-font-color-dark font-['Georgia',_serif] relative inline-block"
+            style={{ fontSize: getHeadingSize(), transition: 'font-size 0.3s ease' }}
+          >
+            Professional Experience
+            <span
+              className={`block h-1 bg-base-theme mt-3 transition-all duration-1000 ease-out ${isVisible ? 'w-16 sm:w-20 md:w-24' : 'w-0'}`}
+            ></span>
+          </h2>
 
-      {/* Flex container for side-by-side layout on larger screens */}
-      <div className="flex flex-col lg:flex-row lg:gap-8 xl:gap-12 lg:items-start container mx-auto">
-        {/* Work Experience Timeline - 50% width on larger screens */}
-        <div className="w-full lg:w-1/2 mb-12 lg:mb-0 transition-all duration-300">
-          <h3 
-            className="font-bold mb-6 sm:mb-8 text-center lg:text-left transition-all duration-300"
-            style={{ 
-              fontSize: `${dynamicStyles.fontSize.subheading / 16}rem`,
-              color: 'var(--base-theme-font-color-dark, #6a2c1a)'
+          <p
+            className="text-accent-color max-w-lg md:max-w-xl lg:max-w-2xl mt-3 sm:mt-4 italic"
+            style={{
+              fontSize: screenSize === 'mobile' ? '1rem' : '1.125rem',
+              transition: 'font-size 0.3s ease'
             }}
           >
-            Work Experience
-          </h3>
-          
-          {/* Timeline */}
-          <div className="relative max-w-lg mx-auto lg:mx-0 px-2 sm:px-4">
-            {/* Center vertical line */}
-            <div 
-              className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-gray-200"
-              style={{ 
-                height: `${timelineData.length * 180 - 80}px`,
-                top: '20px',
-                transition: 'height 0.3s ease-in-out'
-              }}
-            ></div>
-            
-            {timelineData.map((item, idx) => {
-              return (
-                <div 
-                  key={idx}
-                  className={`relative z-10 mb-12 sm:mb-16 ${visibleItems.includes(idx) ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}
-                  style={{ transitionDelay: `${idx * 200}ms` }}
-                >
-                  {/* Connector dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1">
-                    <div className="h-4 w-4 rounded-full bg-white border-4 border-[var(--base-theme)]"></div>
-                  </div>
-                  
-                  {/* Content grid */}
-                  <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4">
-                    {/* Date */}
-                    <div className="text-right">
-                      <div 
-                        className="text-gray-600 font-medium"
-                        style={{ fontSize: screenSize === 'mobile' ? '0.875rem' : '1rem' }}
-                      >
-                        {item.date}
-                      </div>
-                    </div>
-                    
-                    {/* Icon */}
-                    <div 
-                      className="flex items-center justify-center rounded-full shadow-lg bg-[var(--base-theme)] transition-all duration-300"
-                      style={{ 
-                        width: screenSize === 'mobile' ? '3rem' : '3.5rem',
-                        height: screenSize === 'mobile' ? '3rem' : '3.5rem' 
-                      }}
-                    >
-                      <svg 
-                        className="text-white transition-all duration-300" 
-                        style={{ 
-                          width: screenSize === 'mobile' ? '1.25rem' : '1.5rem',
-                          height: screenSize === 'mobile' ? '1.25rem' : '1.5rem' 
-                        }}
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24" 
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                      </svg>
-                    </div>
-                    
-                    {/* Job details */}
-                    <div className="text-left">
-                      <h3 
-                        className="font-bold text-[var(--base-theme-font-color-dark)] transition-all duration-300"
-                        style={{ fontSize: screenSize === 'mobile' ? '1.125rem' : '1.25rem' }}
-                      >
-                        {item.title}
-                      </h3>
-                      <p 
-                        className="text-gray-700 transition-all duration-300"
-                        style={{ fontSize: screenSize === 'mobile' ? '0.875rem' : '1rem' }}
-                      >
-                        {item.company}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+            From intern to independent — building with purpose at every step.
+          </p>
         </div>
 
-        {/* Projects Section - 50% width on larger screens */}
-        <div className="w-full lg:w-1/2 transition-all duration-300">
-          <h3 
-            className="font-bold mb-6 sm:mb-8 text-center lg:text-left transition-all duration-300"
-            style={{ 
-              fontSize: `${dynamicStyles.fontSize.subheading / 16}rem`,
-              color: 'var(--base-theme-font-color-dark, #6a2c1a)'
-            }}
-          >
-            Gallery of AI Projects Tested
-          </h3>
-          
-          <div 
-            className="grid gap-4 sm:gap-6 md:gap-8 transition-all duration-300"
-            style={{ 
-              gridTemplateColumns: screenSize === 'mobile' ? '1fr' : 'repeat(auto-fit, minmax(250px, 1fr))'
-            }}
-          >
-            {itemData.map((item, index) => (
-              <div 
-                key={item.img}
-                className={`transform transition-all duration-700 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-                style={{ transitionDelay: `${800 + index * 200}ms` }}
-                onClick={() => window.open(item.link, "_blank", "noopener,noreferrer")}
-              >
-                <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] cursor-pointer group">
-                  <div className="overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      className="w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                      style={{ height: `${dynamicStyles.imageHeight}px` }}
-                    />
-                  </div>
-                  <div className="p-4 sm:p-5 transition-all duration-300">
-                    <h4 
-                      className="font-bold text-[var(--base-theme-font-color-dark)] transition-all duration-300"
-                      style={{ fontSize: screenSize === 'mobile' ? '1.125rem' : '1.25rem' }}
-                    >
-                      {item.author}
-                    </h4>
-                    <p 
-                      className="text-gray-700 font-medium transition-all duration-300"
-                      style={{ fontSize: screenSize === 'mobile' ? '0.875rem' : '1rem' }}
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line — hidden on mobile */}
+          {!isMobile && (
+            <div
+              className="absolute left-6 sm:left-8 top-0 bottom-0 w-0.5"
+              style={{
+                background: 'linear-gradient(to bottom, transparent, var(--base-theme, #c26a23) 10%, var(--base-theme, #c26a23) 90%, transparent)',
+                opacity: 0.4
+              }}
+            ></div>
+          )}
+
+          {timelineData.map((item, idx) => (
+            <div
+              key={idx}
+              className={`relative ${isMobile ? 'pl-0' : 'pl-16 sm:pl-20'} pb-4 sm:pb-10 md:pb-12 last:pb-0 ${visibleItems.includes(idx) ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'} transition-all duration-700`}
+              style={{ transitionDelay: `${idx * 150}ms` }}
+            >
+              {/* Timeline dot + icon — hidden on mobile */}
+              {!isMobile && (
+                <div
+                  className={`absolute left-0 flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full shadow-md text-white ring-4 ring-white ${getDotBg(item.type)}`}
+                >
+                  <RoleIcon type={item.type} size={item.type === 'break' ? 20 : 22} />
+                </div>
+              )}
+
+              {/* Content card */}
+              <div className={`bg-bg-surface rounded-xl shadow-md p-3 sm:p-5 md:p-6 lg:p-7 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-left border-l-4 ${getBorderClass(item.type)}`}>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4 mb-3">
+                  <div>
+                    <h3
+                      className="text-base sm:text-xl font-bold font-['Georgia',_serif] text-font-color-dark"
                     >
                       {item.title}
-                    </p>
-                    
-                    {/* Animated view project link */}
-                    <div className="mt-2 sm:mt-3 flex items-center text-[var(--base-theme)] font-medium">
-                      <span>View Project</span>
-                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        className="h-4 w-4 ml-1 transform transition-transform duration-300 group-hover:translate-x-1" 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </div>
+                    </h3>
+                    <p className="text-text-secondary text-sm sm:text-base">{item.company}</p>
                   </div>
+                  <span
+                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap self-start ${getBadgeClasses(item.type)}`}
+                  >
+                    {item.type === 'current' && (
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-badge-current-text opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-badge-current-text"></span>
+                      </span>
+                    )}
+                    {item.date}
+                  </span>
                 </div>
+
+                {/* Tech Chips */}
+                {item.chips && (
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-3">
+                    {item.chips.map((chip, i) => (
+                      <span
+                        key={i}
+                        className="inline-flex items-center px-1.5 sm:px-2 py-0.5 rounded-full text-xs font-medium text-chip-text bg-chip-bg-light"
+                      >
+                        {!isMobile && (
+                          <span className="mr-1">{Icons[chip.icon]()}</span>
+                        )}
+                        {chip.label}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Bullet Points */}
+                {item.points && item.points.length > 0 ? (
+                  <ul className="space-y-1 sm:space-y-2 mt-2">
+                    {item.points.map((pt, i) => (
+                      <li key={i} className="flex text-left">
+                        <span className="mt-0.5 mr-2 sm:mr-2.5 text-success-color flex-shrink-0">
+                          {Icons.check()}
+                        </span>
+                        <div>
+                          <h4 className="font-bold text-primary-color text-xs sm:text-base">
+                            {pt.title}
+                          </h4>
+                          {!isMobile && (
+                            <p className="text-text-secondary text-xs sm:text-sm">
+                              {pt.description}
+                            </p>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                )}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

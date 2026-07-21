@@ -34,6 +34,7 @@ import CloudIcon from "@mui/icons-material/Cloud";
 import WorkExperience  from './WorkExperience';
 import Projects from  './Projects';
 import Skills from './Skills';
+import VibeProjects from './VibeProjects';
 
 
 // import { makeStyles } from '@mui/styles';
@@ -60,6 +61,10 @@ const HomePage = () => {
         </section>
         <section id="projects" className="scroll-section ">
           <Projects/>
+        </section>
+
+        <section id="vibe-projects" className="scroll-section">
+          <VibeProjects/>
         </section>
 
         <section id="work-experience" className="scroll-section">

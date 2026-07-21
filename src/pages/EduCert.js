@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { ReactComponent as GoldmanSachsIcon } from '../images/goldman-sachs.svg';
 import { ReactComponent as MetaIcon } from '../images/meta-logo.svg';
 import { ReactComponent as MicrosoftIcon } from  '../images/microsoft-logo.svg';
+import useScreenSize from '../hooks/useScreenSize';
 
 
 // Icons for certifications
@@ -28,42 +29,11 @@ const StorageIcon = () => (
 );
 
 const EduCert = () => {
-  const [screenSize, setScreenSize] = useState('desktop');
+  const { screenSize, isMobile } = useScreenSize();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // Enhanced responsive behavior with detailed breakpoints
   useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        setScreenSize('mobile');
-      } else if (width < 768) {
-        setScreenSize('small-tablet');
-      } else if (width < 1024) {
-        setScreenSize('tablet');
-      } else if (width < 1280) {
-        setScreenSize('desktop');
-      } else if (width < 1536) {
-        setScreenSize('large-desktop');
-      } else {
-        setScreenSize('ultrawide');
-      }
-    };
-    
-    // Set initial state
-    handleResize();
-    
-    // Add event listener with debounce for performance
-    let timeoutId;
-    const debouncedResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(handleResize, 100);
-    };
-    
-    window.addEventListener('resize', debouncedResize);
-    
-    // Setup intersection observer for animations
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -78,16 +48,15 @@ const EduCert = () => {
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-    
-    // Clean up
+
     return () => {
-      window.removeEventListener('resize', debouncedResize);
-      clearTimeout(timeoutId);
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
+
+  const isSmallScreen = isMobile; // mobile or small-tablet
 
   // Responsive icon size based on screen size
   const getIconSize = () => {
@@ -188,30 +157,11 @@ const EduCert = () => {
     icon: 'https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg'
   },
   {
-    title: 'Spring Boot 3 Essential Training',
-    issuer: 'LinkedIn',
-    date: 'April 2025',
-    image: require('../images/certificates/Springboot3_hp.jpg'),
-    icon: 'https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg'
-  },
-  {
     title: 'Demystifying AI',
     issuer: 'University of North Texas',
     date: 'March 2025',
     image: require('../images/certificates/DemystifyingAI_hp.jpg'),
     icon: require('../images/unt-logo.png')
-  },
-  {
-    title: 'Microsoft Azure Fundamentals',
-    issuer: 'Microsoft',
-    date: 'May 2024',
-    image: require('../images/certificates/microsoftazurefundamentals_hp.jpg'),
-    icon: (
-      <div style={{ width: '100%', height: '100%' }}>
-        <MicrosoftIcon style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-      </div>
-    ),
-    // icon: require('../images/microsoft-logo.svg')
   },
   {
     title: 'MySQL Essential Training',
@@ -291,76 +241,143 @@ const EduCert = () => {
     <section 
       ref={sectionRef}
       id="education" 
-      className="py-12 sm:py-14 md:py-16 lg:py-20 bg-gradient-to-br from-amber-50 to-orange-200 font-['Merriweather',_serif]"
+      className="py-12 sm:py-14 md:py-16 lg:py-20 text-left bg-gradient-to-br from-section-gradient-from to-section-gradient-to font-['Merriweather',_serif]"
       style={{ transition: 'padding 0.3s ease' }}
     >
-      <div className="max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+      <div className="max-w-full sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
         {/* Section Header with animated underline */}
-        <div 
-          className={`text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 relative transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+        <div
+          className={`mb-8 sm:mb-10 md:mb-12 lg:mb-16 relative transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
         >
-          <h2 
-            className="font-bold text-[var(--base-theme-font-color-dark)] font-['Georgia',_serif]"
+          <h2
+            className="font-bold text-font-color-dark font-['Georgia',_serif] relative inline-block"
             style={{
               fontSize: styles.heading.fontSize,
-              marginBottom: styles.heading.marginBottom,
-              transition: 'font-size 0.3s ease, margin 0.3s ease'
+              transition: 'font-size 0.3s ease'
             }}
           >
             Education & Certifications
+            <span
+              className={`block h-1 bg-base-theme mt-3 rounded-full transition-all duration-1000 ease-out ${isVisible ? 'w-16 sm:w-20 md:w-24 lg:w-28' : 'w-0'}`}
+            ></span>
           </h2>
-    
-          <div 
-            className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 bg-[#c26a23] rounded-full transition-all duration-1000 ease-out ${isVisible ? 'w-16 sm:w-20 md:w-24 lg:w-28' : 'w-0'}`}
-          ></div>
         </div>
 
-        {/* University Card */}
-        <div 
-          className={`bg-white rounded-xl shadow-lg mb-8 sm:mb-10 md:mb-12 lg:mb-16 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          style={{ transitionDelay: '200ms' }}
-        >
-          <div 
-            className="p-4 sm:p-5 md:p-6 lg:p-8"
-            style={{ transition: 'padding 0.3s ease' }}
+        {/* Education Cards */}
+        <div className="space-y-4 sm:space-y-5 md:space-y-6 mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          {/* University of North Texas */}
+          <div
+            className={`bg-white rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-1 hover:shadow-xl overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            style={{ transitionDelay: '200ms' }}
           >
-            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 lg:gap-8">
-              {/* University Details */}
-              <div className="w-full md:w-3/5 lg:w-2/3 text-center md:text-left">
-                <h3 
-                  className="font-bold text-[var(--base-theme)] font-['Georgia',_serif] mb-1 sm:mb-2"
-                  style={{
-                    fontSize: styles.uniTitle.fontSize,
-                    transition: 'font-size 0.3s ease'
-                  }}
-                >
-                  University of North Texas
-                </h3>
-                <h4 
-                  className="mb-1 sm:mb-2"
-                  style={{
-                    fontSize: styles.uniSubtitle.fontSize,
-                    transition: 'font-size 0.3s ease'
-                  }}
-                >
-                  Master of Science, Computer Science
-                </h4>
-                <p className="text-gray-600 text-sm sm:text-base" style={{ transition: 'font-size 0.3s ease' }}>
-                  Denton, TX
-                </p>
+            <div className="p-2.5 sm:p-5 md:p-6 lg:p-8">
+              <div className="flex flex-row items-start gap-2.5 sm:gap-4 md:gap-6">
+                <div className="flex-shrink-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg overflow-hidden">
+                  <img src={require('../images/unt-logo.png')} alt="UNT" className="w-full h-full object-contain" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-bold text-primary-color font-['Georgia',_serif] text-sm sm:text-base md:text-lg truncate" style={{ fontSize: isMobile ? undefined : styles.uniTitle.fontSize }}>
+                      University of North Texas
+                    </h3>
+                    <span className="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-white bg-success-bg font-bold text-xs sm:text-sm flex-shrink-0">
+                      GPA: 4.0
+                    </span>
+                  </div>
+                  <h4 className="text-xs sm:text-sm md:text-base mb-0.5" style={{ fontSize: isMobile ? undefined : styles.uniSubtitle.fontSize }}>
+                    Master of Science — Computer Science
+                  </h4>
+                  <p className="text-text-secondary text-xs sm:text-sm">Denton, TX · Aug 2023 — May 2025</p>
+                </div>
               </div>
-              
-              {/* Timeline & GPA */}
-              <div className="w-full md:w-2/5 lg:w-1/3 flex flex-col items-center md:items-end mt-4 md:mt-0">
-                <p className="text-gray-600 mb-2 sm:mb-3" style={{ transition: 'font-size 0.3s ease' }}>
-                  Aug 2023 — May 2025 
-                </p>
-                <span 
-                  className="inline-flex items-center px-3 py-1 rounded-full text-white bg-green-600 font-bold"
-                  style={{ fontSize: screenSize === 'mobile' ? '0.75rem' : '0.875rem' }}
-                >
-                  CGPA: 4.00
-                </span>
+            </div>
+          </div>
+
+          {/* St. Martin's Engineering College */}
+          <div
+            className={`bg-white rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-1 hover:shadow-xl overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            style={{ transitionDelay: '300ms' }}
+          >
+            <div className="p-2.5 sm:p-5 md:p-6 lg:p-8">
+              <div className="flex flex-row items-start gap-2.5 sm:gap-4 md:gap-6">
+                <div className="flex-shrink-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg bg-card-header-bg flex items-center justify-center text-lg sm:text-2xl">
+                  🎓
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-bold text-primary-color font-['Georgia',_serif] text-sm sm:text-base md:text-lg truncate" style={{ fontSize: isMobile ? undefined : styles.uniTitle.fontSize }}>
+                      St. Martin's Engineering College
+                    </h3>
+                    <span className="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-white bg-success-bg font-bold text-xs sm:text-sm flex-shrink-0">
+                      87.8%
+                    </span>
+                  </div>
+                  <h4 className="text-xs sm:text-sm md:text-base mb-0.5" style={{ fontSize: isMobile ? undefined : styles.uniSubtitle.fontSize }}>
+                    Bachelor of Technology — Information Technology
+                  </h4>
+                  <p className="text-text-secondary text-xs sm:text-sm">Aug 2019 — Jul 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Army Public School */}
+          <div
+            className={`bg-white rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-1 hover:shadow-xl overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            style={{ transitionDelay: '400ms' }}
+          >
+            <div className="p-2.5 sm:p-5 md:p-6 lg:p-8">
+              <div className="flex flex-row items-start gap-2.5 sm:gap-4 md:gap-6">
+                <div className="flex-shrink-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg bg-card-header-bg flex items-center justify-center text-lg sm:text-2xl">
+                  🪖
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-bold text-primary-color font-['Georgia',_serif] text-sm sm:text-base md:text-lg truncate" style={{ fontSize: isMobile ? undefined : styles.uniTitle.fontSize }}>
+                      Army Public School (APS)
+                    </h3>
+                    <span className="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-white bg-success-bg font-bold text-xs sm:text-sm flex-shrink-0">
+                      88.4%
+                    </span>
+                  </div>
+                  <h4 className="text-xs sm:text-sm md:text-base mb-0.5" style={{ fontSize: isMobile ? undefined : styles.uniSubtitle.fontSize }}>
+                    Intermediate — MPC & CS
+                  </h4>
+                  <p className="text-text-secondary text-xs sm:text-sm">Apr 2017 — Mar 2019</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Delhi Public School */}
+          <div
+            className={`bg-white rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-1 hover:shadow-xl overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            style={{ transitionDelay: '500ms' }}
+          >
+            <div className="p-2.5 sm:p-5 md:p-6 lg:p-8">
+              <div className="flex flex-row items-start gap-2.5 sm:gap-4 md:gap-6">
+                <div className="flex-shrink-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg bg-card-header-bg flex items-center justify-center text-lg sm:text-2xl">
+                  📚
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-bold text-primary-color font-['Georgia',_serif] text-sm sm:text-base md:text-lg truncate" style={{ fontSize: isMobile ? undefined : styles.uniTitle.fontSize }}>
+                      Delhi Public School
+                    </h3>
+                    <span className="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-white bg-success-bg font-bold text-xs sm:text-sm flex-shrink-0">
+                      10 CGPA
+                    </span>
+                  </div>
+                  <h4 className="text-xs sm:text-sm md:text-base mb-0.5" style={{ fontSize: isMobile ? undefined : styles.uniSubtitle.fontSize }}>
+                    Class 1 — 10
+                  </h4>
+                  <p className="text-text-secondary text-xs sm:text-sm">2007 — 2017</p>
+                  {!isMobile && (
+                    <p className="text-text-muted text-xs sm:text-sm mt-1">
+                      Solo Singing · Group Singing · Dance · Spelling Bee · Model UN · Sanskrit Poetry · Table Tennis
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -372,7 +389,7 @@ const EduCert = () => {
           style={{ transitionDelay: '400ms' }}
         >
           <h3 
-            className="font-bold text-[var(--base-theme)] font-['Georgia',_serif] mb-4 sm:mb-5 md:mb-6 lg:mb-8 text-center md:text-left"
+            className="font-bold text-primary-color font-['Georgia',_serif] mb-4 sm:mb-5 md:mb-6 lg:mb-8"
             style={{
               fontSize: styles.subheading.fontSize,
               transition: 'font-size 0.3s ease, margin 0.3s ease'
@@ -381,35 +398,35 @@ const EduCert = () => {
             Professional Certifications
           </h3>
           
-          <div 
-            className="grid gap-4 sm:gap-5 md:gap-6 lg:gap-8"
-            style={{ 
+          <div
+            className="grid gap-2.5 sm:gap-5 md:gap-6 lg:gap-8"
+            style={{
               gridTemplateColumns: `repeat(${getCertColumns()}, minmax(0, 1fr))`,
               transition: 'grid-template-columns 0.3s ease, gap 0.3s ease'
             }}
           >
             {certifications.map((cert, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-white rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
-                style={{ 
-                  padding: styles.padding,
+                style={{
+                  padding: isMobile ? '0.625rem' : styles.padding,
                   transitionDelay: `${500 + index * 100}ms`,
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? 'translateY(0)' : 'translateY(20px)'
                 }}
               >
-                {cert.image? (
-                  <img 
-                src={cert.image} 
-                alt={cert.title} 
+                {cert.image && !isSmallScreen ? (
+                  <img
+                src={cert.image}
+                alt={cert.title}
                 className="w-full object-cover"
                 style={{ height: styles.imageSize }}
               />
                 ): null}
                 <div className="flex items-start mt-4" style={{ gap: styles.gap }}>
                   <div 
-                    className="p-2 sm:p-2.5 md:p-3 bg-[var(--base-theme-light)] text-[var(--base-theme)] rounded-full flex-shrink-0"
+                    className="p-2 sm:p-2.5 md:p-3 bg-base-theme-light text-base-theme rounded-full flex-shrink-0"
                     style={{ transition: 'padding 0.3s ease' }}
                   >
                     <div style={{ width: styles.iconSize, height: styles.iconSize }}>
@@ -438,7 +455,7 @@ const EduCert = () => {
                       {cert.title}
                     </h4>
                     <p 
-                      className="text-gray-600"
+                      className="text-text-secondary"
                       style={{ 
                         fontSize: screenSize === 'mobile' ? '0.75rem' : '0.875rem',
                         transition: 'font-size 0.3s ease'

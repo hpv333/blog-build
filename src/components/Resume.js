@@ -23,7 +23,7 @@ const Resume = () => {
           </div>
           <div className="profile_content">
             <h1>Hari Priya Vedala</h1>
-            <p>Full Stack Developer</p>
+            <p>Code. Ship. Repeat. · Full Stack · Vibe Coder</p>
           </div>
         </div>
         <div className='sub_box2'>
