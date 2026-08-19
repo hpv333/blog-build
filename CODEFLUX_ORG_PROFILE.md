@@ -26,9 +26,9 @@ Our philosophy is simple: **zero-cost architecture, maximum impact.** Every proj
 
 ## Our Projects
 
-### 1. VRK Diet Companion
+### 1. Diet Companion
 
-> Personalised wellness tracking built on the VRK Diet system
+> Personalised wellness tracking built on a Diet system
 
 | | |
 |---|---|

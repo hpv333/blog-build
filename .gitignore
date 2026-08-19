@@ -24,3 +24,11 @@ yarn-error.log*
 
 # Contact form — not live yet
 src/pages/ContactServices.js
+
+# Local/private files
+.claude/
+AI_Job_Roles_HariPriya.csv
+our_changes.patch
+prompting_ for_ v2_India _hp_portfolio.txt
+resume_1page_preview.png
+resume_preview.png

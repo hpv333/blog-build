@@ -70,19 +70,21 @@ $base-theme-dollar: #f4a261; // Updated to an orange-based color
 
 .App {
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+
 .content-wrapper {
-  margin-top: 64px;
-  height: 100vh;
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
-  @media (max-width: 768px) {
-    margin-top: 72px;
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -126,26 +128,16 @@ $base-theme-dollar: #f4a261; // Updated to an orange-based color
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   scroll-behavior: smooth;
 }
 
 .scroll-section {
   flex: 0 0 100vw;
-  height: 100vh;
+  height: 100%;
   scroll-snap-align: start;
-  padding: 1rem 0.5rem;
+  padding: 0;
   box-sizing: border-box;
   overflow-y: auto;
   background: linear-gradient(to left, var(--base-theme-light), var(--bg-gradient-dark));
-
-  @media (min-width: 640px) {
-    padding: 1rem 1rem;
-  }
-  @media (min-width: 768px) {
-    padding: 1rem 1.5rem;
-  }
-  @media (min-width: 1024px) {
-    padding: 1rem 2rem;
-  }
 }

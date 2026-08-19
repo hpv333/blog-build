@@ -41,7 +41,7 @@ const Header2 = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex bg-transparent">
+    <div className="sticky top-0 z-50 flex bg-transparent w-full">
       {/* AppBar with original color scheme (using var(--base-theme)) */}
       <div className="w-full flex flex-col" style={{ backgroundColor: 'var(--base-theme)' }}>
         <div className="flex items-center justify-between px-4 md:px-6 py-1">

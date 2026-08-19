@@ -18,11 +18,6 @@ const skillsData = [
     skills: ['Claude API', 'Claude Code', 'Google Gemini API', 'Gemini Notebooks', 'Lovable', 'Emergent', 'Ollama (Local LLMs)', 'ChatGPT', 'REST APIs', 'Prompt Engineering'],
   },
   {
-    title: 'Languages',
-    icon: '💻',
-    skills: ['JavaScript', 'Python', 'Java', 'SQL', 'NoSQL'],
-  },
-  {
     title: 'Frameworks & Libraries',
     icon: '🧩',
     skills: ['React.js', 'Node.js', 'Django', 'Bootstrap', 'Tailwind CSS', 'REST APIs'],
@@ -30,12 +25,17 @@ const skillsData = [
   {
     title: 'Databases & Cloud',
     icon: '🗄️',
-    skills: ['MongoDB', 'PostgreSQL', 'Supabase', 'Azure', 'Vercel', 'Cloudflare'],
+    skills: ['MongoDB', 'PostgreSQL', 'Supabase', 'Vercel', 'Cloudflare'],
   },
   {
     title: 'Tools & Collaboration',
     icon: '🛠️',
     skills: ['Git / GitHub', 'Figma', 'Canva', 'OOP', 'Agile', 'Client Onboarding'],
+  },
+  {
+    title: 'Languages',
+    icon: '💻',
+    skills: ['JavaScript', 'Python', 'SQL', 'NoSQL'],
   },
 ];
 
@@ -115,11 +115,11 @@ const Skills = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full py-12 sm:py-16 md:py-20 lg:py-24 text-left bg-gradient-to-br from-section-gradient-from to-section-gradient-to"
+      className="w-full py-4 sm:py-6 md:py-8 lg:py-10 text-left bg-gradient-to-br from-section-gradient-from to-section-gradient-to"
     >
       <div className="max-w-full sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
         {/* Section Heading */}
-        <div className={`transform transition-all duration-700 mb-8 sm:mb-10 md:mb-12 lg:mb-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+        <div className={`transform transition-all duration-700 mb-4 sm:mb-6 md:mb-8 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <h2
             className="font-bold text-font-color-dark font-['Georgia',_serif] relative inline-block"
             style={{ fontSize: getHeadingSize(), transition: 'font-size 0.3s ease' }}

@@ -527,11 +527,11 @@ const Projects = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-12 sm:py-16 md:py-20 lg:py-24 text-left bg-gradient-to-br from-section-gradient-from to-section-gradient-to"
+      className="py-4 sm:py-6 md:py-8 lg:py-10 text-left bg-gradient-to-br from-section-gradient-from to-section-gradient-to"
     >
       <div className="max-w-full sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
         {/* Section Header with animated transition */}
-        <div className={`transform transition-all duration-700 mb-8 sm:mb-10 md:mb-12 lg:mb-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+        <div className={`transform transition-all duration-700 mb-4 sm:mb-6 md:mb-8 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <h2
             className="font-bold text-font-color-dark font-['Georgia',_serif] relative inline-block"
             style={{
@@ -544,7 +544,7 @@ const Projects = () => {
           </h2>
 
           <p
-            className="text-accent-color max-w-lg md:max-w-xl lg:max-w-2xl mt-3 sm:mt-4 mb-8 sm:mb-10 md:mb-12 italic"
+            className="text-accent-color max-w-lg md:max-w-xl lg:max-w-2xl mt-2 sm:mt-3 mb-0 italic"
             style={{
               fontSize: screenSize === 'mobile' ? '1rem' : '1.125rem',
               transition: 'font-size 0.3s ease'

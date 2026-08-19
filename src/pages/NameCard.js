@@ -72,7 +72,7 @@ const NameCard = () => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full py-4 sm:py-6 md:py-8 lg:py-10 px-3 sm:px-4 md:px-6 lg:px-8">
+    <div className="flex justify-center items-center w-full py-3 sm:py-4 md:py-6 lg:py-8 px-3 sm:px-4 md:px-6 lg:px-8">
       <div className="w-full max-w-full sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto">
         <div
           className="flex flex-col items-center p-3 sm:p-4 md:p-6 lg:p-8"

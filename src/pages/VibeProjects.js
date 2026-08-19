@@ -31,7 +31,6 @@ const vibeProjects = [
       }
     ],
     links: {
-      github: 'https://github.com/codeflux-ai#3-ai-security-auditor',
       website: 'https://ai-security-auditor.lovable.app/'
     }
   },
@@ -63,7 +62,6 @@ const vibeProjects = [
       }
     ],
     links: {
-      github: 'https://github.com/codeflux-ai#2-aquaremind',
       website: 'https://aqua-hydrate.vercel.app/'
     }
   },
@@ -95,9 +93,7 @@ const vibeProjects = [
           'Native drag-and-drop mechanics supporting both desktop mouse events and mobile touch interactions with zero external dependencies.'
       }
     ],
-    links: {
-      github: 'https://github.com/codeflux-ai'
-    }
+    links: {}
   }
 ];
 
@@ -185,15 +181,15 @@ const VibeProjects = () => {
   const renderCardHeader = (proj) => {
     return (
       <div className="p-3 sm:p-5 lg:p-6 bg-base-theme-light">
-        <h3 className="text-base sm:text-2xl font-bold text-primary-color mb-1 sm:mb-2 text-left">
+        <h3 className="text-base sm:text-2xl md:text-2xl font-bold text-primary-color mb-1 sm:mb-2 text-left">
           {proj.title}
         </h3>
 
-        <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 justify-start">
+        <div className="flex flex-wrap gap-1 sm:gap-2 md:gap-2.5 mb-2 justify-start">
           {proj.chips.map((chip, i) => (
             <span
               key={i}
-              className="inline-flex items-center px-1.5 sm:px-2.5 py-0.5 rounded-full text-xs font-medium text-chip-text bg-chip-bg"
+              className="inline-flex items-center px-1.5 sm:px-2 py-0.5 rounded-full text-xs font-medium text-chip-text bg-chip-bg"
             >
               {!isMobile && (
                 <span className="mr-1">
@@ -205,52 +201,54 @@ const VibeProjects = () => {
           ))}
         </div>
 
-        <div className="bg-base-theme text-font-color-light px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium shadow-md inline-block">
-          {proj.date}
+        <div className="flex items-center justify-between">
+          <div className="bg-base-theme text-font-color-light px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium shadow-md inline-block">
+            {proj.date}
+          </div>
+
+          <div className="flex items-center gap-2">
+            {proj.links && proj.links.website && (
+              <a
+                href={proj.links.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-base-theme text-font-color-light rounded-full hover:bg-base-theme-dark transition-colors inline-flex"
+                aria-label="Live Website"
+              >
+                {Icons.link()}
+              </a>
+            )}
+            {proj.links && proj.links.github ? (
+              <a
+                href={proj.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-base-theme text-font-color-light rounded-full hover:bg-base-theme-dark transition-colors inline-flex"
+                aria-label="GitHub Repository"
+              >
+                {Icons.github()}
+              </a>
+            ) : (
+              <div className="opacity-50 flex items-center gap-1.5">
+                <span className="p-2 bg-base-theme-light text-primary-color rounded-full cursor-not-allowed">
+                  {Icons.github()}
+                </span>
+                <span className="text-xs text-text-muted italic font-medium">Private</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
   };
 
-  const renderActionButtons = (proj) => {
-    if (proj.links) {
-      return (
-        <div className="flex space-x-2">
-          {proj.links.github && (
-            <a
-              href={proj.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-base-theme-light text-primary-color rounded-full hover:bg-chip-bg-light transition-colors"
-              aria-label="GitHub Repository"
-            >
-              {Icons.github()}
-            </a>
-          )}
-          {proj.links.website && (
-            <a
-              href={proj.links.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-base-theme-light text-primary-color rounded-full hover:bg-chip-bg-light transition-colors"
-              aria-label="Live Website"
-            >
-              {Icons.link()}
-            </a>
-          )}
-        </div>
-      );
-    }
-    return null;
-  };
-
   return (
     <section
       ref={sectionRef}
-      className="py-12 sm:py-16 md:py-20 lg:py-24 text-left"
+      className="py-4 sm:py-6 md:py-8 lg:py-10 text-left"
     >
       <div className="max-w-full sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10">
-        <div className={`transform transition-all duration-700 mb-8 sm:mb-10 md:mb-12 lg:mb-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+        <div className={`transform transition-all duration-700 mb-4 sm:mb-6 md:mb-8 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <h2
             className="font-bold text-font-color-dark font-['Georgia',_serif] relative inline-block"
             style={{
@@ -262,7 +260,7 @@ const VibeProjects = () => {
             <span className={`block h-1 bg-base-theme mt-3 transition-all duration-1000 ease-out ${isVisible ? 'w-16 sm:w-20 md:w-24' : 'w-0'}`}></span>
           </h2>
           <p
-            className="text-accent-color max-w-lg md:max-w-xl lg:max-w-2xl mt-3 sm:mt-4 mb-8 sm:mb-10 md:mb-12 italic"
+            className="text-accent-color max-w-lg md:max-w-xl lg:max-w-2xl mt-2 sm:mt-3 mb-0 italic"
             style={{
               fontSize: screenSize === 'mobile' ? '1rem' : '1.125rem',
               transition: 'font-size 0.3s ease'
@@ -293,10 +291,6 @@ const VibeProjects = () => {
                 {renderCardHeader(proj)}
 
                 <div className="p-3 sm:p-5 md:p-6">
-                  <div className="flex justify-start mb-4">
-                    {renderActionButtons(proj)}
-                  </div>
-
                   <ul className="space-y-1.5 sm:space-y-4">
                     {proj.points.map((pt, i) => (
                       <li key={i} className="flex group text-left">
